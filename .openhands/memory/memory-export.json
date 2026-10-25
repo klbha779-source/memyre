@@ -3075,7 +3075,7 @@
  "state": [
   {
    "k": "state",
-   "v": "**هاتف المستخدم TECNO LI9 (أندرويد 15، بغداد) متصل — APK v3.2 مع إصلاح 4 أسباب جذرية.**\nAPK v3.2: specialUse (بلا حد زمني) + OverlayGuard (نافذة 1×1) + startForegroundService + onTimeout\nالإشعارات: فقط done/fail/blocked/ask — بلا ضجيج (أُزيل إشعار الموقع والمرحلة)\nالهاتف: /yt /open /screen /click /tap /swipe + /where /trail /track /ring /flash + /perm + ⏹ تحكم\nالكمبيوتر: control.py · notifyd.py · dashboard.py + /dash · findmy.py + /findmy · deskdo.py · escdo.sh\nhttps://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk\n⚠️ يحتاج من المستخدم: تثبيت v3.2 + زر «صلاحيات» (فوق التطبيقات + البطارية) + «تفعيل النقر»"
+   "v": "**هاتف TECNO LI9 + الكمبيوتر — تحكم كامل بالاثنين.**\n🖥️ شاشة الكمبيوتر: /desk (Xvfb :99 · 1440x900 · VNC 5900) — اضغط على الصورة، اكتب، اسحب\n📱 APK v3.2 (49KB): /yt /open /screen /click + /where /trail /ring /flash + /perm\n🤖 تليجرام: /shot /click /type /key /windows /focus /close /launch /drag /rclick /scroll /vnc\nالكمبيوتر: deskctl.py · deskpanel.py · control.py · notifyd.py · dashboard.py /dash · findmy.py /findmy · escdo.sh\nالإشعارات: فقط done/fail — بلا ضجيج\nhttps://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/desk\n⚠️ الهاتف يحتاج v3.2 + زر «صلاحيات»"
   }
  ],
  "sections": [
