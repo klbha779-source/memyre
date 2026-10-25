@@ -1,6 +1,6 @@
 {
  "version": 1,
- "at": "2026-10-25 11:35",
+ "at": "2026-10-25 11:36",
  "log": [
   {
    "at": "2026-10-25 10:59",
@@ -1361,45 +1361,14 @@
    "at": "2026-10-25 11:28",
    "kind": "note",
    "text": "المستخدم: اعمل لي كود قصير كود يعني قصير في رابط وكل شيء في ذاكره ومن معلومات يعني المهمه التي عندما افتح اي محادثه جديده مباشره ارسلها له ويتذكر كل شيء بالحرف الواحد كانني فعدني في المحادثه الاصليه بحث يعني اي محادثه جديده تعرف ماذا اقصد وتعرف كل شيء حرفيا اي محادثه افتحها في اوبنه الجديده بس ارسل لها هذا الكود الذي ارسل الان تستعيد الذاكره وتستعيد المعلومات بسرعه فائقه وتتذكر كل شيء وتكمل مشروع كانها هي المهندسه الذي قام ببناء مشروعي اصلا واريد الذاكره تتحدث يعني اي مشروع متقدم به او شيء يصل للذاكره يعني ما اريد ذاكره الا ارفع المشروعه واقول له ارفع المشروع اريد كل شيء بشكل تلقائي اوتوماتيك الى الابد 24 ساعه يتسجل ويدون وتسجل في مشروع لكي تعرفه وتعرف اين مصنع فيه وتعرف ما هي المعلومات التي وصلنا بها"
+  },
+  {
+   "at": "2026-10-25 11:36",
+   "kind": "note",
+   "text": "الاختبار النهائي نجح: محو كامل → /workspace/sk → 17 ملفاً + 41 حقيقة + 196KB سجل"
   }
  ],
  "facts": [
-  {
-   "at": "2026-10-25 10:59",
-   "text": "EMOTION TAGS 2026-10-23 -> `detail/emotion-tag-rootcause-2026-10-23.md`: `iraqiTextUtil.clean_tags()`"
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "rewrites `[tag]`->`<tag>` and the vocab has no `<tag>`, so tags shredded to chars."
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "FIX: `_itu.clean_tags = lambda t: t`. Valid: [whisper] [shhh] [laughter] [giggle] [cry] [sigh]"
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "[gasp] [groan] [mumble] [sniff] [cough] [clear_throat] [inhale] [UH]. Invalid: laugh scream shout"
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "sob moan pause breath stutter hes weep throat_clear."
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "TELEGRAM BOT: @escaidoaiopd_bot, chat_id 5399915161. Token ONLY in `~/.escdo/telegram.json` (600)."
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "Cell templates keep `__TOKEN__`/`__CHAT__`/`__REF_IDS__`, rendered by `tools/make_cell.py`."
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "Details: `detail/telegram-bot-2026-10-23.md`."
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "PLAN v3 (`docs/plan-tts-v3.md`) is authoritative; v2 and FINAL-PLAN.md are superseded. HARD FACT: reference audio is TRUNCATED (`ENC_COND_LEN=6*16000`=6.0s, `DEC_COND_LEN=10*24000`=10.0s) so cloning from hours of audio is useless — quality comes from cleanliness, not length. Lahgtna has NO duration control; scene timing needs a post-processing layer (librosa time_stretch; >20% distorts, so split the text)."
-  },
   {
    "at": "2026-10-25 10:59",
    "text": "AGENT/QUOTA AUDIT 2026-10-24 -> `detail/free-quota-evidence-2026-10-24.md` + `detail/agent-audit-2026-10-24.md`: Kilo is the only keyless free API (200/hr/IP = 3.33/min, so 5-10/min sustained is impossible on one IP). `/v1/models` is public everywhere and proves NOTHING — test `/chat/completions`. OpenHands runs on LiteLLM so it is already a router. No OSS agent combines web UI + real code execution + live events + MCP + skills + memory + resume except OpenHands."
@@ -1527,12 +1496,32 @@
   {
    "at": "2026-10-25 11:21",
    "text": "الحارس المستقل (Reaper) ضروري: يقتل حتى المهمة التي لا تفحص نفسها — لأن الخيط المعلّق لا يستطيع أن يقتل نفسه"
+  },
+  {
+   "at": "2026-10-25 11:36",
+   "text": "الكارثة التي اكتشفتها: الحارس الخلفي دفع ذاكرة فارغة فوق GitHub ومسحت 41 حقيقة → الحل: _is_empty() يرفض الدفع الفارغ + _git_backup() نسخة ثانية في git المحلي"
+  },
+  {
+   "at": "2026-10-25 11:36",
+   "text": "memory.db ملف ثنائي .db لا يُدفع عبر contents API — أُعيد بناؤه من memory-export.json في restore (الذي يُصدَّر تلقائياً قبل كل دفع)"
+  },
+  {
+   "at": "2026-10-25 11:36",
+   "text": "GitHub push protection يحجب أي ملف فيه سر حقيقي: أنواع اكتُشفت فعلياً = VERCEL_PERSONAL_ACCESS_TOKEN (vcp_) و GOOGLE_GCP_API_KEY_BOUND_SERVICE_ACCOUNT (AQ.) — كشفها بـ bisect على محتوى الملف"
+  },
+  {
+   "at": "2026-10-25 11:36",
+   "text": "recorder.py: يقرأ llm_message من MessageEvent (لا message) · role في llm_message.role · يكتب TRANSCRIPT.md غير محدود + يحجب الأسرار"
+  },
+  {
+   "at": "2026-10-25 11:36",
+   "text": "الاستعادة تعمل: محو .openhands/memory كاملاً ثم /workspace/sk → 17 ملفاً · 272 سطر سجل · 41 حقيقة · 196KB سجل محادثة · الخزنة تفتح"
   }
  ],
  "state": [
   {
    "k": "state",
-   "v": "**المرحلة 2 مكتملة: الحرس + الاستمرارية.**\n🛡️ `guard.py` — سقف 600ث · كاشف تكرار · حارس مستقل يقتل المهام الصمّاء\n🌐 `agent.js` — AbortController + إعادة اتصال تلقائية\n♻️ `scripts/supervise.sh` — يُبقي كل شيء حيّاً للأبد (يبدأ بـ ./scripts/supervise.sh start)\n📱 بوت التيليجرام — رمز الاستعادة SKAIDO-RESTORE\n**استعادة كاملة: `python3 scripts/mem.py restore`**"
+   "v": "**المنظومة كاملة ومُختبَرة.**\n🎯 **الكود القصير:** `/workspace/sk` (42 سطراً) — استعادة كاملة في ثوانٍ\n📝 **المسجّل:** `scripts/recorder.py` — يسجّل كل رسالة تلقائياً في TRANSCRIPT.md ويدفع كل 5 دقائق\n🛡️ **الحرس:** 600ث · كاشف تكرار · reaper مستقل\n♻️ **المشرف:** 5 خدمات (الحارس، المسجّل، البوت، خادمان)\n🔒 **نسختان:** GitHub + git محلي · حجب 15 نوع سر"
   }
  ],
  "sections": [
@@ -1551,8 +1540,8 @@
   {
    "proj": "ESCaiDO",
    "k": "done",
-   "v": "م1 ذاكرة دائمة (restore 16/16) · م2 الحرس (600ث + كاشف تكرار + reaper) + مشرف دائم 4/4 خدمات + بوت تيليجرام (/restore في 5.4ث)",
-   "at": "2026-10-25 11:21"
+   "v": "م1 ذاكرة دائمة · م2 الحرس+المشرف · م3 الكود القصير /workspace/sk + المسجّل التلقائي 24/7 + نسختان (GitHub+git) + حجب الأسرار",
+   "at": "2026-10-25 11:36"
   },
   {
    "proj": "ESCaiDO",
