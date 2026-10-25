@@ -6,3 +6,7 @@
 - 2026-10-25 11:09 — **HARD MODEL LIMITS (Lahgtna):** reference audio is TRUNCATED — `ENC_COND_LEN=6*16000` (6.0s) and
 - 2026-10-25 11:09 — `DEC_COND_LEN=10*24000` (10.0s). Cloning from hours of audio is useless; quality comes from
 - 2026-10-25 11:09 — cleanliness, not length. There is NO duration control in `generate()` — scene timing needs a
+- 2026-10-25 11:21 — post-processing layer (librosa time_stretch; beyond ~20% it distorts, so split the text instead).
+- 2026-10-25 11:21 — `max_text_tokens=2048`, `max_speech_tokens=4096`, vocab 2454, stop_token 6562.
+- 2026-10-25 11:21 — **`language_id="iq"` is NOT wired to the Iraqi normalizer.** `tokenizer.py` maps the normalizer to
+- 2026-10-25 11:21 — `"no"` (Norwegian code reused). `"iq"` emits an `[iq]` token with no normalization. Needs an A/B test.
