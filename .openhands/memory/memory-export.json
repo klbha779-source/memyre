@@ -1,6 +1,6 @@
 {
  "version": 1,
- "at": "2026-10-25 19:23",
+ "at": "2026-10-25 19:24",
  "log": [
   {
    "at": "2026-10-25 10:59",
@@ -2960,14 +2960,6 @@
  ],
  "facts": [
   {
-   "at": "2026-10-25 17:51",
-   "text": "قدرات تطبيق ESCaiDO Bridge (داخل الـ dex، مُتحقَّقة بـ dexdump): /info (طراز+أندرويد+معمارية+أنوية+ذاكرة+تخزين) · /diag (تشخيص+حلول) · /battery (نسبة+شحن+حرارة+جهد) · /ls (عرض أي مجلد) · /find (بحث في كل /sdcard) · /get (إرسال ملف/صورة) · /photos (أحدث 5 صور) · /apps (كل التطبيقات عبر QUERY_ALL_PACKAGES) · /sms (آخر 5 رسائل) · /shot (لقطة شاشة عبر MediaProjection+ImageReader) · /loc (آخر موقع). الأمان داخل الكود: يقبل chat_id المالك فقط، safe() يحجب .ssh/.gnupg/keychain/.netrc. ملاحظة صادقة: الاستقصاء في Thread عادي — أندرويد يوقفه عند الخروج للتطبيق؛ للتشغيل الدائم يلزم Foreground Service. لم أجرّبه على هاتف حقيقي."
-  },
-  {
-   "at": "2026-10-25 17:53",
-   "text": "طلب المستخدم: يريد مني توكن ماعرف ايش شنو اضيف فيه ياخي اني اريد بمجرد انزلة يبدء يتحكم بالجهاز عن طريق اوبن هاندز بدون صلاحيات ولا اي شيئ اصلا مباشرة يفتح بلجهاز"
-  },
-  {
    "at": "2026-10-25 17:57",
    "text": "APK ESCaiDO Bridge v1.1 (بلا إعداد): التوكن TG_TOKEN ومعرّف TG_CHAT مدمجان وقت البناء داخل Engine.java (public static final String TOKEN/CHAT) ويُستخدمان في مُنشئ Engine مع fallback من SharedPreferences. التطبيق يبدأ الجسر تلقائياً عند الفتح بلا زر ولا إدخال. البنية ثلاثية: Engine.java (كل المنطق: الاستقصاء + 11 أمر + لقطة الشاشة) · BridgeService.java (Foreground Service بـ START_STICKY + إشعار دائم مرئي — يمنع أندرويد من قتل العملية عند الخروج) · MainActivity.java (شاشة + سلسلة الصلاحيات + تمرير إذن MediaProjection للمحرّك). الدليل: التوكن موجود فعلاً في classes.dex داخل الـ APK النهائي المُنزَّل (تحقّقت بفتح الـ zip وقراءة البايتات)."
   },
@@ -3070,6 +3062,14 @@
   {
    "at": "2026-10-25 19:10",
    "text": "عيب حقيقي في notifyd.py (أُصلح): كان يتتبّع الإشعارات بعدّاد أسطر notify.seen مع lines[seen:]. عند مسح alerts.jsonl أو تقليصه، العدّاد يشير لما بعد النهاية فيصمت المُشعر تماماً — وهو سبب توقف إشعارات الإنجاز. الحل الصحيح: تتبّع بالمحتوى (SENT=notify.sent) مع key = at|kind|title، وقراءة كل الأسطر في كل دورة. مُختبَر: 4 إشعارات (2 ضجيج + 2 حقيقية) → أُرسل 2 بالضبط، وإعادة تشغيل المُشعر → 0 تكرار. درس عام: لا تتتبّع ملفاً بعدّاد أسطر — استخدم مفاتيح محتوى."
+  },
+  {
+   "at": "2026-10-25 19:24",
+   "text": "التحكم بالكمبيوتر (deskctl.py + deskpanel.py + مسارات /desk). البيئة كانت headless بلا شاشة، فالحل: sudo -n apt-get install xvfb x11vnc xdotool wmctrl imagemagick xclip ffmpeg openbox xterm novnc websockify (sudo بلا كلمة سر يعمل، وapt-get update مطلوب أولاً وإلا 'Unable to locate package'). Xvfb :99 بمقاس 1440x900 + openbox (لاحظ: openbox يقبل DISPLAY كمتغير بيئة فقط، ولا يقبل --display) + x11vnc على المنفذ 5900. deskctl.py: start/status/shot/move/click/drag/scroll/key/type_text/paste/windows/focus/close/maximize/launch/set_password/vnc_info/answer. مسارات الخادم: GET /desk (اللوحة) · /desk/live (PNG حيّ) · /desk/state · /desk/shot.png · POST /desk/do. السرعة: التصوير 97 مللي ثانية، والتحديث كل ثانيتين مقبول."
+  },
+  {
+   "at": "2026-10-25 19:24",
+   "text": "أخطاء وقعت وأُصلحت: (1) استبدال نصي بـ str.replace على 'else:' في telegram_bot.py فشل لأن else: تتكرر — الحل: البحث بالسطر مع سياق السطر التالي. (2) telegram_bot.py لم يكن يقرأ .env إطلاقاً (فقط os.environ) فرفض البدء بـ 'TG_TOKEN غير مضبوط' — أُضيف _load_env() يقرأ .env. (3) اختبار curl مع نص عربي في -d يُفسد الترميز ويُرسل JSON غير صالح فيبدو الأمر كأنه فشل — الحل: استخدم Python urllib مع json.dumps(ensure_ascii=False).encode('utf-8'). (4) رسالة يرسلها البوت بنفسه لا تعود إليه كتحديث getUpdates — لا تختبر بوتاً بإرسال رسالة من حسابه، بل من هاتف المستخدم. (5) Playwright/Chromium لا يعمل في هذه البيئة (sandbox) — لا تعتمد عليه للتحقق من واجهة."
   }
  ],
  "state": [
