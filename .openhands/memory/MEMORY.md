@@ -4,7 +4,7 @@
 
 <!-- MEM:STATE -->
 ## الحالة الحالية
-_2026-10-25 11:18_
+_2026-10-25 11:21_
 
 **المرحلة 2 مكتملة: الحرس + الاستمرارية.**
 🛡️ `guard.py` — سقف 600ث · كاشف تكرار · حارس مستقل يقتل المهام الصمّاء
@@ -16,6 +16,11 @@ _2026-10-25 11:18_
 
 <!-- MEM:FACTS -->
 ## حقائق دائمة
+- الحارس المستقل (Reaper) ضروري: يقتل حتى المهمة التي لا تفحص نفسها — لأن الخيط المعلّق لا يستطيع أن يقتل نفسه
+- الاختبارات المُثبتة: الحرس يقتل عند 6ث (6.0ث فعلياً) · الحارس المستقل قتل مهمة صمّاء عند 5ث · /restore يعمل في 5.4ث
+- المشرف يفحص المنافذ (curl) لا أسماء العمليات — pgrep -f يفشل مع 'python3 server.py' الذي يعمل بـ cwd مختلف
+- تطبيق workbench يحتاج: python3 -m workbench.run مع httpx+uvicorn+fastapi+python-multipart · المنفذ 12000
+- البدء التلقائي: .agents/plugins/skaido-memory/hooks/startup.sh يُشغّل scripts/supervise.sh في كل جلسة (SessionStart) — idempotent
 - الأمر الحاسم: python3 scripts/mem.py restore يستعيد الذاكرة + القاعدة + الخزنة + .env من GitHub
 - بوت التيليجرام @escaidoaiopd_bot: /start /restore /status /progress /keys /save /projects · رمز الاستعادة SKAIDO-RESTORE · التوكن في الخزنة (TG_TOKEN)
 - المشرف scripts/supervise.sh: يُبقي الحارس + البوت + الخادم حيّين للأبد · يفحص المنافذ لا الأسماء · يستعيد المفاتيح من الخزنة تلقائياً
@@ -52,8 +57,4 @@ _2026-10-25 11:18_
 - FIX: `_itu.clean_tags = lambda t: t`. Valid: [whisper] [shhh] [laughter] [giggle] [cry] [sigh]
 - rewrites `[tag]`->`<tag>` and the vocab has no `<tag>`, so tags shredded to chars.
 - EMOTION TAGS 2026-10-23 -> `detail/emotion-tag-rootcause-2026-10-23.md`: `iraqiTextUtil.clean_tags()`
-- `"no"` (Norwegian code reused). `"iq"` emits an `[iq]` token with no normalization. Needs an A/B test.
-- **`language_id="iq"` is NOT wired to the Iraqi normalizer.** `tokenizer.py` maps the normalizer to
-- `max_text_tokens=2048`, `max_speech_tokens=4096`, vocab 2454, stop_token 6562.
-- post-processing layer (librosa time_stretch; beyond ~20% it distorts, so split the text instead).
 <!-- /MEM:FACTS -->
