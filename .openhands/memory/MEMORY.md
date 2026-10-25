@@ -4,18 +4,22 @@
 
 <!-- MEM:STATE -->
 ## الحالة الحالية
-_2026-10-25 12:11_
+_2026-10-25 12:13_
 
-**المنظومة كاملة ومُختبَرة.**
-🎯 **الكود القصير:** `/workspace/sk` (42 سطراً) — استعادة كاملة في ثوانٍ
-📝 **المسجّل:** `scripts/recorder.py` — يسجّل كل رسالة تلقائياً في TRANSCRIPT.md ويدفع كل 5 دقائق
-🛡️ **الحرس:** 600ث · كاشف تكرار · reaper مستقل
-♻️ **المشرف:** 5 خدمات (الحارس، المسجّل، البوت، خادمان)
-🔒 **نسختان:** GitHub + git محلي · حجب 15 نوع سر
+**المرحلة 3: حماية آخر لحظة — مُنجزة.**
+⏱️ **الخطاف:** كل رسالة ترسلها → تُدفع قبل أن أرد (UserPromptSubmit)
+⚡ **سرعة الدفع:** 19ث → **0.5ث** (بصمات sha256)
+🔒 **قفل:** يمنع 3 رسائل سريعة من التسجيل 3 مرات
+🚪 **flush عند الإغلاق:** SIGTERM/SIGINT/atexit
+✅ **مُختبَر:** رسالة جديدة → GitHub في 3 ثوان
 <!-- /MEM:STATE -->
 
 <!-- MEM:FACTS -->
 ## حقائق دائمة
+- ملف الخطافات الفعلي: .agents/plugins/skaido-memory/hooks/hooks.json (فيه UserPromptSubmit + SessionStart). الخطاف لا يعمل في الجلسة الجارية إن أُضيف بعد بدئها — يعم…
+- قفل .runtime/recorder.lock (90ث) ضروري: الخطاف يُنفَّذ عند كل رسالة، و3 رسائل سريعة = 3 عمليات متزامنة تسجّل نفس الدور 3 مرات. أُضيف أيضاً منع تكرار في record() يقا…
+- الأداء: push() كان 19ث → صار 0.5ث بـ .pushed.json (بصمات sha256؛ الملفات غير المتغيرة تُتجاهل). يجب استثناء .pushed.json نفسه من الدفع وإلا يُبطل بصماته
+- الثغرة القاتلة التي طلب إصلاحها المستخدم: 'آخر دقائق قبل إغلاق المحادثة'. الحل 4 طبقات: (1) خطاف UserPromptSubmit يدفع فوراً عند كل رسالة قبل أن يبدأ الوكيل بالرد (…
 - طلب المستخدم: اريد اخر دقائق قبل اغلاق محفوظه ايضا يعني ما اريد اخر دقائق يعني مثلا لو كنت انا معه في موضوع مهم وتم اغلاق المحادثه كيف سيعرف النظام الجديد بالمحادثه…
 - طلب المستخدم: سؤال هل التقدم سيكون محفوظ الى الابد ام سيكون كل محرز جديده جديده يعاد من البدايه اجبني بسرعة نصيا
 - الاستعادة تعمل: محو .openhands/memory كاملاً ثم /workspace/sk → 17 ملفاً · 272 سطر سجل · 41 حقيقة · 196KB سجل محادثة · الخزنة تفتح
@@ -49,9 +53,4 @@ _2026-10-25 12:11_
 - **UI INTEGRATION 2026-10-24**: The React RTL workbench UI now lives in `workbench/ui/` and is served at **/ui** (build output `workbench/static/ui/`); the old vanil…
 - MODEL_COMPARISON.md, FREE_API_PROVIDERS.md, AGENT_ARCHITECTURE.md, SECURITY_AND_LIMITATIONS.md.
 - **REPORTS written to `reports/` (2026-10-24):** ESCaiDO_BRAIN_RESEARCH.md (main, Arabic),
-- **REVISED CAPACITY 2026-10-24:** Gemini 100/day + NVIDIA ~100-400/day + Kilo 200/hr ⇒ **~300-700 req/day** vs the 1000-2000 target. Improved ~3x with the NVIDIA key…
-- **GEMINI KEY (measured 2026-10-24) -> `detail/gemini-key-measurements-2026-10-24.md`:** works via OpenAI-compatible `/v1beta/openai/chat/completions` (Bearer) so it…
-- **NVIDIA KEY (measured 2026-10-24) -> `detail/nvidia-key-measurements-2026-10-24.md`:** works. Only 4/85 models usable: **`z-ai/glm-5.3`** (free HERE — plans claime…
-- and push detail into `detail/`. Check pointers resolve (`grep -o 'detail/.*\.md'`).
-- **Memory budget: ~6000 chars combined**; over budget drops lines from the TOP. Keep this file lean
 <!-- /MEM:FACTS -->
