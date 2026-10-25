@@ -1,6 +1,6 @@
 {
  "version": 1,
- "at": "2026-10-25 12:18",
+ "at": "2026-10-25 12:19",
  "log": [
   {
    "at": "2026-10-25 10:59",
@@ -2766,17 +2766,14 @@
    "at": "2026-10-25 12:16",
    "kind": "note",
    "text": "المستخدم: الآن بعد ما تأكدنا إن الذاكرة محفوظة، الآن نبدأ بالشيء الجدي، الأهم اللي هو هدفنا الأصلي. الآن أريد منك تعمل منظومة بحث متكاملة شاملة كاملة لأوبن هاندز، يعني تعملها بشكل خطافات. ويعني مو وكيل فرعي وي بريستريج هذا اللي يتأخر. وي بريستريج قبل كان يتأخر كثير يعني. وإنا أرسلت في مهمة. أقول له ابحث مدة كم دقيقة؟ يبحث مدة ساعة. أنا لا أريد هكذا. أنا أريد يلتزم بمدة البحث الذي أعطيه له، سواء دقيقة، دقيقتين، ثلاثة، حسب المدة اللي أعطيها إله. وأريد يستخدم طريقة أو MCP أو أدوات احترافية يضع فيها النظام متكامل، نفس النظام الذي كان في الأيجنت. نظام الأيجنت نفسه لكن أقوى من نظام الأيجنت ويكون مدمج مع OpenHands وبجانب DeepSeek 4.1 Flash اللي هو المنفذ الأصلي في OpenHands. يعني شوف إمكانيات OpenHands واعمل"
+  },
+  {
+   "at": "2026-10-25 12:19",
+   "kind": "note",
+   "text": "المستخدم: اريدك تقارن المنظومه القديمه بمنظومات الان انت تبحث عنها الان ابحث عنها وشوف هل هذه منظومه القديمه الافضل ام يوجد لديك فكره ومنظومه لن تطرق على اي انسان او اي نموذجات من قبل"
   }
  ],
  "facts": [
-  {
-   "at": "2026-10-25 10:59",
-   "text": "MODEL_COMPARISON.md, FREE_API_PROVIDERS.md, AGENT_ARCHITECTURE.md, SECURITY_AND_LIMITATIONS.md."
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "**UI INTEGRATION 2026-10-24**: The React RTL workbench UI now lives in `workbench/ui/` and is served at **/ui** (build output `workbench/static/ui/`); the old vanilla page stays at `/`. `src/lib/api.ts` is the only file that calls fetch. Full notes + the 6 browser-only bugs (toast never dismissed, rAF scroll-anchor race, RTL `inset-inline-end` putting the mobile drawer partly on screen, history re-populating the compose queue, SSE surviving a network drop so offline was never detected, and a prototype-CSS class mismatch that rendered the app unstyled) are in `detail/workbench-ui-2026-10-24.md`. Browser tests: `workbench/ui/e2e/*.py` (real Chromium, no mocks)."
-  },
   {
    "at": "2026-10-25 10:59",
    "text": "**WORKBENCH MODELS 2026-10-24**: \"the models aren't connected\" was really LATENCY — `gemini-3.8-flash` was first in every role chain but returns 429, so each message burned 20-37s before failover (now fastest-first + PER_MODEL_TIMEOUT=45 → ~1.5s). VISION was never wired: images must be sent as base64 `image_url` parts, not a filename note. The React app is now served at ROOT (`/legacy` = old vanilla page). Reasoning models (nemotron-3.5-super-vl) fill `reasoning_content` first, so a big token cap makes them ALWAYS time out — keep a REASONING set, cap ~700 tokens, 120s budget. Settings (theme/accent/lang/density/radius/animations/models/skills) persist in a `settings(scope,key,value)` table; `/api/models` never accepts an API key from the browser. Full detail: `detail/workbench-ui-2026-10-24.md`."
@@ -2916,6 +2913,10 @@
   {
    "at": "2026-10-25 12:16",
    "text": "طلب المستخدم: الآن بعد ما تأكدنا إن الذاكرة محفوظة، الآن نبدأ بالشيء الجدي، الأهم اللي هو هدفنا الأصلي. الآن أريد منك تعمل منظومة بحث متكاملة شاملة كاملة لأوبن هاندز، يعني تعملها بشكل خطافات. ويعني مو وكيل فرعي وي بريستريج هذا اللي يتأخر. وي بريستريج قبل كان يتأخر كثير يعني. وإنا أرسلت في مهمة. أقول له ابحث مدة كم دقيقة؟ يبحث مدة ساعة. أنا لا أريد هكذا. أنا أريد يلتزم بمدة البحث الذي أعطيه له، سواء دقيقة، دقيقت"
+  },
+  {
+   "at": "2026-10-25 12:19",
+   "text": "طلب المستخدم: اريدك تقارن المنظومه القديمه بمنظومات الان انت تبحث عنها الان ابحث عنها وشوف هل هذه منظومه القديمه الافضل ام يوجد لديك فكره ومنظومه لن تطرق على اي انسان او اي نموذجات من قبل"
   }
  ],
  "state": [
