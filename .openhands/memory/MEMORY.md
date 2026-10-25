@@ -4,7 +4,7 @@
 
 <!-- MEM:STATE -->
 ## الحالة الحالية
-_2026-10-25 12:05_
+_2026-10-25 12:06_
 
 **المنظومة كاملة ومُختبَرة.**
 🎯 **الكود القصير:** `/workspace/sk` (42 سطراً) — استعادة كاملة في ثوانٍ
@@ -16,6 +16,8 @@ _2026-10-25 12:05_
 
 <!-- MEM:FACTS -->
 ## حقائق دائمة
+- طلب المستخدم: اريد اخر دقائق قبل اغلاق محفوظه ايضا يعني ما اريد اخر دقائق يعني مثلا لو كنت انا معه في موضوع مهم وتم اغلاق المحادثه كيف سيعرف النظام الجديد بالمحادثه…
+- طلب المستخدم: سؤال هل التقدم سيكون محفوظ الى الابد ام سيكون كل محرز جديده جديده يعاد من البدايه اجبني بسرعة نصيا
 - الاستعادة تعمل: محو .openhands/memory كاملاً ثم /workspace/sk → 17 ملفاً · 272 سطر سجل · 41 حقيقة · 196KB سجل محادثة · الخزنة تفتح
 - recorder.py: يقرأ llm_message من MessageEvent (لا message) · role في llm_message.role · يكتب TRANSCRIPT.md غير محدود + يحجب الأسرار
 - GitHub push protection يحجب أي ملف فيه سر حقيقي: أنواع اكتُشفت فعلياً = VERCEL_PERSONAL_ACCESS_TOKEN (vcp_) و GOOGLE_GCP_API_KEY_BOUND_SERVICE_ACCOUNT (AQ.) — كشفها…
@@ -52,5 +54,4 @@ _2026-10-25 12:05_
 - **NVIDIA KEY (measured 2026-10-24) -> `detail/nvidia-key-measurements-2026-10-24.md`:** works. Only 4/85 models usable: **`z-ai/glm-5.3`** (free HERE — plans claime…
 - and push detail into `detail/`. Check pointers resolve (`grep -o 'detail/.*\.md'`).
 - **Memory budget: ~6000 chars combined**; over budget drops lines from the TOP. Keep this file lean
-- AGENT/QUOTA AUDIT 2026-10-24 -> `detail/free-quota-evidence-2026-10-24.md` + `detail/agent-audit-2026-10-24.md`: Kilo is the only keyless free API (200/hr/IP = 3.33…
 <!-- /MEM:FACTS -->
