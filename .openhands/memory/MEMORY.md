@@ -4,7 +4,7 @@
 
 <!-- MEM:STATE -->
 ## الحالة الحالية
-_2026-10-25 12:13_
+_2026-10-25 12:16_
 
 **المرحلة 3: حماية آخر لحظة — مُنجزة.**
 ⏱️ **الخطاف:** كل رسالة ترسلها → تُدفع قبل أن أرد (UserPromptSubmit)
@@ -16,6 +16,7 @@ _2026-10-25 12:13_
 
 <!-- MEM:FACTS -->
 ## حقائق دائمة
+- طلب المستخدم: الآن بعد ما تأكدنا إن الذاكرة محفوظة، الآن نبدأ بالشيء الجدي، الأهم اللي هو هدفنا الأصلي. الآن أريد منك تعمل منظومة بحث متكاملة شاملة كاملة لأوبن هاند…
 - ملف الخطافات الفعلي: .agents/plugins/skaido-memory/hooks/hooks.json (فيه UserPromptSubmit + SessionStart). الخطاف لا يعمل في الجلسة الجارية إن أُضيف بعد بدئها — يعم…
 - قفل .runtime/recorder.lock (90ث) ضروري: الخطاف يُنفَّذ عند كل رسالة، و3 رسائل سريعة = 3 عمليات متزامنة تسجّل نفس الدور 3 مرات. أُضيف أيضاً منع تكرار في record() يقا…
 - الأداء: push() كان 19ث → صار 0.5ث بـ .pushed.json (بصمات sha256؛ الملفات غير المتغيرة تُتجاهل). يجب استثناء .pushed.json نفسه من الدفع وإلا يُبطل بصماته
@@ -52,5 +53,4 @@ _2026-10-25 12:13_
 - **WORKBENCH MODELS 2026-10-24**: "the models aren't connected" was really LATENCY — `gemini-3.8-flash` was first in every role chain but returns 429, so each messag…
 - **UI INTEGRATION 2026-10-24**: The React RTL workbench UI now lives in `workbench/ui/` and is served at **/ui** (build output `workbench/static/ui/`); the old vanil…
 - MODEL_COMPARISON.md, FREE_API_PROVIDERS.md, AGENT_ARCHITECTURE.md, SECURITY_AND_LIMITATIONS.md.
-- **REPORTS written to `reports/` (2026-10-24):** ESCaiDO_BRAIN_RESEARCH.md (main, Arabic),
 <!-- /MEM:FACTS -->
