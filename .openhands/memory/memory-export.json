@@ -2951,10 +2951,6 @@
  "facts": [
   {
    "at": "2026-10-25 17:51",
-   "text": "رابط تحميل APK: https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk (HTTP 200 · application/vnd.android.package-archive). أُضيف المسار إلى design-preview/server.py (يعمل على 12001) بعد return super().do_GET() بإزاحة 8 مسافات — لا 16. مهم: work-2 = 12001 = server.py (Agent Skaido)، و work-1 = 12000 = workbench. فحص التحميل الفعلي بـ curl مطابق بايت ببايت ✅. ملفات التحميل في design-preview/downloads/ (index.html + الـ APK)."
-  },
-  {
-   "at": "2026-10-25 17:51",
    "text": "قدرات تطبيق ESCaiDO Bridge (داخل الـ dex، مُتحقَّقة بـ dexdump): /info (طراز+أندرويد+معمارية+أنوية+ذاكرة+تخزين) · /diag (تشخيص+حلول) · /battery (نسبة+شحن+حرارة+جهد) · /ls (عرض أي مجلد) · /find (بحث في كل /sdcard) · /get (إرسال ملف/صورة) · /photos (أحدث 5 صور) · /apps (كل التطبيقات عبر QUERY_ALL_PACKAGES) · /sms (آخر 5 رسائل) · /shot (لقطة شاشة عبر MediaProjection+ImageReader) · /loc (آخر موقع). الأمان داخل الكود: يقبل chat_id المالك فقط، safe() يحجب .ssh/.gnupg/keychain/.netrc. ملاحظة صادقة: الاستقصاء في Thread عادي — أندرويد يوقفه عند الخروج للتطبيق؛ للتشغيل الدائم يلزم Foreground Service. لم أجرّبه على هاتف حقيقي."
   },
   {
@@ -3060,6 +3056,10 @@
   {
    "at": "2026-10-25 19:00",
    "text": "السبب الجذري لتوقف الجسر بعد دقائق (مؤكَّد من مستندات أندرويد 15 الرسمية): (1) dataSync ممنوع من BOOT_COMPLETED → ForegroundServiceStartNotAllowedException. (2) dataSync له حد 6 ساعات في 24 ثم onTimeout(). (3) SYSTEM_ALERT_WINDOW وحده لا يكفي في أندرويد 15: يجب أن تكون هناك نافذة طبقية ظاهرة قبل بدء الخدمة. (4) startService() من الخلفية ممنوع منذ أندرويد 8 → يجب startForegroundService(). الحل في v3.2: نوع specialUse (بلا حد زمني ومسموح من الإقلاع) + PROPERTY_SPECIAL_USE_FGS_SUBTYPE + FOREGROUND_SERVICE_SPECIAL_USE + OverlayGuard.java (نافذة 1×1 شفافة غير لمسية تُرفع قبل بدء الخدمة) + startForegroundService في BootReceiver/MainActivity + onTimeout يعيد تشغيل نفسه. LocationService نوعه location|specialUse."
+  },
+  {
+   "at": "2026-10-25 19:10",
+   "text": "عيب حقيقي في notifyd.py (أُصلح): كان يتتبّع الإشعارات بعدّاد أسطر notify.seen مع lines[seen:]. عند مسح alerts.jsonl أو تقليصه، العدّاد يشير لما بعد النهاية فيصمت المُشعر تماماً — وهو سبب توقف إشعارات الإنجاز. الحل الصحيح: تتبّع بالمحتوى (SENT=notify.sent) مع key = at|kind|title، وقراءة كل الأسطر في كل دورة. مُختبَر: 4 إشعارات (2 ضجيج + 2 حقيقية) → أُرسل 2 بالضبط، وإعادة تشغيل المُشعر → 0 تكرار. درس عام: لا تتتبّع ملفاً بعدّاد أسطر — استخدم مفاتيح محتوى."
   }
  ],
  "state": [
