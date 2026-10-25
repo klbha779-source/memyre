@@ -4,7 +4,7 @@
 
 <!-- MEM:STATE -->
 ## الحالة الحالية
-_2026-10-25 14:10_
+_2026-10-25 14:14_
 
 **المرحلة 2: منظومة البحث العميق — مُنجزة ومُختبَرة.**
 🔍 **المحرك:** design-preview/dr2.py · 31 محركاً · 7 طبقات + جولات تعميق
@@ -18,6 +18,7 @@ _2026-10-25 14:10_
 
 <!-- MEM:FACTS -->
 ## حقائق دائمة
+- طلب المستخدم: جرب تبحث بها عن ادوات لكتابة اكواد خام لمساعدة اوبن هلندز بكتابة اجود واحسن اللكواد في بيئئة كاجل وريط عقذ LTX 2.5 لكي نجهز اعضم نظام ممكن وبنفس الوقت…
 - دروس المقارنة مع منظومات العالم (2026-10-25): MiroThinker 1.7 (88.2 BrowseComp، 600 أداة/مهمة) · hyperresearch (4 نقّاد متوازين) · unlazy (شجرة العمق: كل ورقة تأخذ …
 - منظومة البحث مدمجة في OpenHands بثلاث طرق: (1) مهارة .agents/skills/deep-research/SKILL.md (2) خادم MCP design-preview/mcp_deepresearch.py بأدوات deep_research/rese…
 - سلسلة النماذج dr2.LADDER (مُختبرة حياً): nemotron-3-ultra-550b (0.5ث، الأقوى والأسرع) → nemotron-3-nano-omni-30b (0.6) → nemotron-3.5-bolt-e4b (0.2) → ثم بدائل Open…
@@ -49,5 +50,4 @@ _2026-10-25 14:10_
 - بوت التيليجرام @escaidoaiopd_bot: /start /restore /status /progress /keys /save /projects · رمز الاستعادة SKAIDO-RESTORE · التوكن في الخزنة (TG_TOKEN)
 - المشرف scripts/supervise.sh: يُبقي الحارس + البوت + الخادم حيّين للأبد · يفحص المنافذ لا الأسماء · يستعيد المفاتيح من الخزنة تلقائياً
 - الواجهة agent.js: fetchGuard بمهلة 600ث + AbortController + 3 إعادات بمضاعفة (0.8/1.6/3.2ث) · window.abortAll للإلغاء اليدوي
-- أسباب التكرار/الglitch التي أُصلحت: لا AbortController في الواجهة (fetch يعلّق للأبد) · إعادة المحاولة على finish_reason=length · لا سقف زمني على مسار المحادثة
 <!-- /MEM:FACTS -->
