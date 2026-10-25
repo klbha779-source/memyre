@@ -1,6 +1,6 @@
 {
  "version": 1,
- "at": "2026-10-25 14:00",
+ "at": "2026-10-25 14:01",
  "log": [
   {
    "at": "2026-10-25 10:59",
@@ -2800,50 +2800,6 @@
  ],
  "facts": [
   {
-   "at": "2026-10-25 10:59",
-   "text": "**COUNCIL + AUTO-REPLACE 2026-10-24**: `workbench/council.py` runs a 5-lens panel (fact/logic/edge/risk/improve) per role; each lens is pinned to a DIFFERENT model (`DIVERSITY_POOL`) because 5 critics on one model share its blind spots. The lead synthesises and must end with \"تعديلات مقبولة: N\". Auto-replace: 2 consecutive failures → model benched, and only a model of the SAME ROLE is promoted (never swap a reasoning model for a cheap chat model). Kilo `https://api.kilo.ai/api/gateway/v1` is KEYLESS and serves nemotron-3-ultra-550b:free — verify with a bogus-path control (HTTP 400 = genuine; HTTP 200 'OK' = proxy interception). Never send an empty Bearer token to a keyless provider."
-  },
-  {
-   "at": "2026-10-25 11:09",
-   "text": "منظومة الذاكرة الدائمة: scripts/mem.py — الأوامر: load/tail/note/fact/set/add/project/projects/compress/seal/unseal/push/pull/restore/doctor/export"
-  },
-  {
-   "at": "2026-10-25 11:09",
-   "text": "الأمر الحاسم للاستعادة الكاملة بعد فقدان كل شيء: python3 scripts/mem.py restore (يستعيد الذاكرة + القاعدة + الخزنة + .env)"
-  },
-  {
-   "at": "2026-10-25 11:09",
-   "text": "المستودع البعيد: klbha779-source/memyre — عام! لذلك vault.key.b64 لا يُدفع أبداً (يُحمى تلقائياً)"
-  },
-  {
-   "at": "2026-10-25 11:09",
-   "text": "الخزنة .openhands/vault.enc مشفّرة AES-256(CTR)+HMAC-SHA256 · المفتاح .openhands/.vaultkey متتبَّع في git"
-  },
-  {
-   "at": "2026-10-25 11:09",
-   "text": "الخطاف التلقائي: .agents/plugins/skaido-memory/hooks/hooks.json — UserPromptSubmit يقرأ آخر 5000 حرف في كل رسالة"
-  },
-  {
-   "at": "2026-10-25 11:09",
-   "text": "الحارس: scripts/mem-daemon.sh كل 15 دقيقة — snapshot + محاولة دفع (لا crontab في البيئة، حلقة خلفية)"
-  },
-  {
-   "at": "2026-10-25 11:09",
-   "text": "حد الحقن 6000 حرف — MEMORY.md يجب أن يبقى ≤5500؛ الحقائق تُقصَّر إلى 165 حرفاً والكامل في memory.db"
-  },
-  {
-   "at": "2026-10-25 11:09",
-   "text": "التوكن الكلاسيكي ghp_ يملك صلاحيات كاملة؛ fine-grained كان قراءة فقط. التوكن في .env + الخزنة"
-  },
-  {
-   "at": "2026-10-25 11:09",
-   "text": "لا تشغّل push بمجلد ذاكرة فارغ — يحمي نفسه الآن ويرفض الكتابة فوق نسخة بعيدة سليمة"
-  },
-  {
-   "at": "2026-10-25 11:18",
-   "text": "الحرس (guard.py): سقف صارم 600ث لأي عملية · كاشف تكرار حرفي · حارس مستقل يقتل حتى المهمة التي لا تفحص نفسها"
-  },
-  {
    "at": "2026-10-25 11:18",
    "text": "أسباب التكرار/الglitch التي أُصلحت: لا AbortController في الواجهة (fetch يعلّق للأبد) · إعادة المحاولة على finish_reason=length · لا سقف زمني على مسار المحادثة"
   },
@@ -2942,12 +2898,40 @@
   {
    "at": "2026-10-25 13:00",
    "text": "طلب المستخدم: تمام ابدا الان بهذه الخطه وكما قلت لك عندما تريد ان تبحث بان الان فصاعدا لا تبحث في ابحث في منظوماتنا الجديده ومنظوماتنا الجديده اجعلها من ضمن الام سي بي او المهارات او الخطافات لكي يعني يكون البحث فيها فعله صحيح عندما نطلبها في اي وقت على مدار الساعه 24 ساعه بمجرد ان اقول له ابحث لي الان في منصه او ابحث لي عن منصه او عندما يحتاج يعني يكون هناك نظام ذكي يعرف عندما يحتاج الى سؤال او يحتاج الى حل لي"
+  },
+  {
+   "at": "2026-10-25 14:01",
+   "text": "منظومة البحث العميق v2 = design-preview/dr2.py (1389 سطراً). المبدأ الحاكم: الميزانية عقد صارم. Budget.SHARES = L1 8% · L2 30% · L3 3% · L4 6% · L5 15% · L6 12% · L7 12%، والباقي لجولات التعميق L5b. كل طبقة لها سقف مطلق، وما توفّره يُعاد للطبقات اللاحقة (refund/bonus). النتيجة المُقاسة: 1د=59.8ث (100%) · 3د=180ث (100%) · 10د يتحسّن الجودة كثيراً."
+  },
+  {
+   "at": "2026-10-25 14:01",
+   "text": "أخطر علّة كانت في منظومة البحث: ThreadPoolExecutor عند الخروج ينتظر كل المهام المعلّقة، فيتجاوز الموعد. الحل: ex.shutdown(wait=False, cancel_futures=True) + as_completed(timeout=...) + حد زمني لكل محرك على حدة (14ث). كذلك llm() يجب أن يستقبل deadline مطلقاً ويتوقف عن تجربة بقية النماذج بعده، وإلا فإن نموذجاً بطيئاً واحداً يأكل شريحة الطبقة كلها."
+  },
+  {
+   "at": "2026-10-25 14:01",
+   "text": "جودة البحث تتضاعف بجولات التعميق L5b (بعد النواقد): تُبحث الثغرات التي حدّدها النقّاد، ثم تُفتح دفعة المرشحين التالية، ثم يُعاد تعبئة المخزون باستعلامات جديدة من النموذج. القياس: 1د→24 مُتحقَّق · 3د→71 · 10د→179. بدون L5b كان 10د يعطي 61 فقط."
+  },
+  {
+   "at": "2026-10-25 14:01",
+   "text": "المحركات: 31 محركاً بلا مفاتيح تأكدت حياً 2026-10-25 (github, ghcode, gitlab, codeberg, hf/hfspace/hfdata, openalex, arxiv, crossref, hn, lobsters, marginalia, npm, crates, docker, nuget, maven, pypi, wiki, stack, itunes, fdroid, play, mastodon, searx, wayback, doaj, europepmc, zenodo, osf). مرفوضة نهائياً: Reddit (403) · DuckDuckGo (يحتجب) · Tavily (استُهلك 432) · SemanticScholar/AlternativeTo/Mojeek/Libraries.io/Invidious/Piped/Disboard (لا تعمل)."
+  },
+  {
+   "at": "2026-10-25 14:01",
+   "text": "سلسلة النماذج dr2.LADDER (مُختبرة حياً): nemotron-3-ultra-550b (0.5ث، الأقوى والأسرع) → nemotron-3-nano-omni-30b (0.6) → nemotron-3.5-bolt-e4b (0.2) → ثم بدائل OpenRouter المجانية → deepseek-v4.1-flash في آخر السلسلة (40ث، ينتهي بمهلة). LAYER_RUNG يوزّع الطبقات على السلّم. OpenRouter المجاني يعطي 402/429 كثيراً — NVIDIA هو العمود الفقري."
+  },
+  {
+   "at": "2026-10-25 14:01",
+   "text": "منظومة البحث مدمجة في OpenHands بثلاث طرق: (1) مهارة .agents/skills/deep-research/SKILL.md (2) خادم MCP design-preview/mcp_deepresearch.py بأدوات deep_research/research_status/research_reject، مُسجَّل في .agents/mcp-design.json باسم escaido-deep-research (3) خطاف scripts/research-hook.sh في UserPromptSubmit يكشف 'ابحث/search for/أفضل أداة' ويستخرج المدة، ثم يُطلق البحث في الخلفية فوراً (<1ث) ويكتب في .runtime/research.log. لا وكيل فرعي — كان يتأخر 20-30 دقيقة."
+  },
+  {
+   "at": "2026-10-25 14:01",
+   "text": "دروس المقارنة مع منظومات العالم (2026-10-25): MiroThinker 1.7 (88.2 BrowseComp، 600 أداة/مهمة) · hyperresearch (4 نقّاد متوازين) · unlazy (شجرة العمق: كل ورقة تأخذ كامل الميزانية) · 7inaydas/deepresearch (يقتل مخرجاته، بلا مفاتيح، 9د) · maestro (asyncio هرمي) · parallel-search-skill (ميزانية طول صارمة). منظومتنا القديمة deepresearch.py كانت تتجاوز الموعد 2.3× (دقيقة→136ث) وكان L1 متسلسلاً 29.5ث — هذا كان أصل شكوى المستخدم."
   }
  ],
  "state": [
   {
    "k": "state",
-   "v": "**المرحلة 3: حماية آخر لحظة — مُنجزة.**\n⏱️ **الخطاف:** كل رسالة ترسلها → تُدفع قبل أن أرد (UserPromptSubmit)\n⚡ **سرعة الدفع:** 19ث → **0.5ث** (بصمات sha256)\n🔒 **قفل:** يمنع 3 رسائل سريعة من التسجيل 3 مرات\n🚪 **flush عند الإغلاق:** SIGTERM/SIGINT/atexit\n✅ **مُختبَر:** رسالة جديدة → GitHub في 3 ثوان"
+   "v": "**المرحلة 2: منظومة البحث العميق — مُنجزة ومُختبَرة.**\n🔍 **المحرك:** design-preview/dr2.py · 31 محركاً · 7 طبقات + جولات تعميق\n⏱️ **الميزانية عقد صارم:** 1د=59.8ث (100%) · 3د=180ث (100%)\n📈 **الجودة تتضاعف بالوقت:** 1د→24 مُتحقَّق · 3د→71 · 10د→179\n🧠 **4 نقّاد متوازون:** مطابقة · مجانية · نضج · خطر\n🔌 **مدمجة 3 طرق:** مهارة + MCP (escaido-deep-research) + خطاف تلقائي\n🚫 **الذاكرة الرافضة:** أي موقع ترفضه لا يعود أبداً\n⚡ **يُستدعى تلقائياً:** تقول «ابحث» → يبدأ فوراً بلا وكيل فرعي"
   }
  ],
  "sections": [
