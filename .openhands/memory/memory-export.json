@@ -1,6 +1,6 @@
 {
  "version": 1,
- "at": "2026-10-25 12:50",
+ "at": "2026-10-25 12:51",
  "log": [
   {
    "at": "2026-10-25 10:59",
@@ -2776,13 +2776,14 @@
    "at": "2026-10-25 12:47",
    "kind": "note",
    "text": "تيليجرام: ياخي لا تشغل هذا الوكيل الفرعي وكيل فرعي:\nweb-researcher هذا الوكيل يتاخر جدا في الرد اريدك تستبدله بخطاف سريع او ام سي بي مختلف ولكن سريع في البحث هذا الوكيل جدا جدا بطيء في البحث عندما يعني يبحث يكتب لي جاري تشغيل الوكيل الفرعي ويتاخر بمعنى الكلمه يتاخر فوق ال 20 او 30 دقيقه من اجل بحث سريع فحل هذه المشكله يا اخي على هذا استبدل هذا الويب بالكامل"
+  },
+  {
+   "at": "2026-10-25 12:51",
+   "kind": "note",
+   "text": "المستخدم: ياخي لا تشغل هذا الوكيل الفرعي وكيل فرعي: web-researcher هذا الوكيل يتاخر جدا في الرد اريدك تستبدله بخطاف سريع او ام سي بي مختلف ولكن سريع في البحث هذا الوكيل جدا جدا بطيء في البحث عندما يعني يبحث يكتب لي جاري تشغيل الوكيل الفرعي ويتاخر بمعنى الكلمه يتاخر فوق ال 20 او 30 دقيقه من اجل بحث سريع فحل هذه المشكله يا اخي على هذا استبدل هذا الويب بالكامل"
   }
  ],
  "facts": [
-  {
-   "at": "2026-10-25 10:59",
-   "text": "**WORKBENCH MODELS 2026-10-24**: \"the models aren't connected\" was really LATENCY — `gemini-3.8-flash` was first in every role chain but returns 429, so each message burned 20-37s before failover (now fastest-first + PER_MODEL_TIMEOUT=45 → ~1.5s). VISION was never wired: images must be sent as base64 `image_url` parts, not a filename note. The React app is now served at ROOT (`/legacy` = old vanilla page). Reasoning models (nemotron-3.5-super-vl) fill `reasoning_content` first, so a big token cap makes them ALWAYS time out — keep a REASONING set, cap ~700 tokens, 120s budget. Settings (theme/accent/lang/density/radius/animations/models/skills) persist in a `settings(scope,key,value)` table; `/api/models` never accepts an API key from the browser. Full detail: `detail/workbench-ui-2026-10-24.md`."
-  },
   {
    "at": "2026-10-25 10:59",
    "text": "**MEDIA + ROSTER 2026-10-24**: Audio works ONLY via `input_audio` (`inline_data` → 400 on the Gemini OpenAI endpoint); video works as a `data:video/mp4;base64` URL in the ordinary `image_url` part. Only Gemini models accept these — NVIDIA silently ignores them. The provider catalogue advertises models that return **410 Gone**, so model lists must come from a live probe, never from `/v1/models`. `laguna-xs` is fastest (198ms) but intermittently 503s → use as fallback, not chain lead. The 1054 kB entry chunk was mermaid imported eagerly; `import('mermaid')` + `manualChunks` cut it to **47 kB** (DOMContentLoaded 124ms). Phone bug: the work panel is a fixed overlay under 920px and defaulted to open, covering the screen and eating taps."
@@ -2922,6 +2923,10 @@
   {
    "at": "2026-10-25 12:19",
    "text": "طلب المستخدم: اريدك تقارن المنظومه القديمه بمنظومات الان انت تبحث عنها الان ابحث عنها وشوف هل هذه منظومه القديمه الافضل ام يوجد لديك فكره ومنظومه لن تطرق على اي انسان او اي نموذجات من قبل"
+  },
+  {
+   "at": "2026-10-25 12:51",
+   "text": "طلب المستخدم: ياخي لا تشغل هذا الوكيل الفرعي وكيل فرعي: web-researcher هذا الوكيل يتاخر جدا في الرد اريدك تستبدله بخطاف سريع او ام سي بي مختلف ولكن سريع في البحث هذا الوكيل جدا جدا بطيء في البحث عندما يعني يبحث يكتب لي جاري تشغيل الوكيل الفرعي ويتاخر بمعنى الكلمه يتاخر فوق ال 20 او 30 دقيقه من اجل بحث سريع فحل هذه المشكله يا اخي على هذا استبدل هذا الويب بالكامل"
   }
  ],
  "state": [
