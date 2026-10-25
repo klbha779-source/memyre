@@ -193,3 +193,4 @@
 - 2026-10-25 16:12 — memory.db ملف ثنائي .db لا يُدفع عبر contents API — أُعيد بناؤه من memory-export.json في restore (الذي يُصدَّر تلقائياً قبل كل دفع)
 - 2026-10-25 16:12 — GitHub push protection يحجب أي ملف فيه سر حقيقي: أنواع اكتُشفت فعلياً = VERCEL_PERSONAL_ACCESS_TOKEN (vcp_) و GOOGLE_GCP_API_KEY_BOUND_SERVICE_ACCOUNT (AQ.) — كشفها بـ bisect على محتوى الملف
 - 2026-10-25 16:12 — recorder.py: يقرأ llm_message من MessageEvent (لا message) · role في llm_message.role · يكتب TRANSCRIPT.md غير محدود + يحجب الأسرار
+- 2026-10-25 16:15 — الاستعادة تعمل: محو .openhands/memory كاملاً ثم /workspace/sk → 17 ملفاً · 272 سطر سجل · 41 حقيقة · 196KB سجل محادثة · الخزنة تفتح
