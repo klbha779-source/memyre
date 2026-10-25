@@ -4,18 +4,23 @@
 
 <!-- MEM:STATE -->
 ## الحالة الحالية
-_2026-10-25 11:35_
+_2026-10-25 11:36_
 
-**المرحلة 2 مكتملة: الحرس + الاستمرارية.**
-🛡️ `guard.py` — سقف 600ث · كاشف تكرار · حارس مستقل يقتل المهام الصمّاء
-🌐 `agent.js` — AbortController + إعادة اتصال تلقائية
-♻️ `scripts/supervise.sh` — يُبقي كل شيء حيّاً للأبد (يبدأ بـ ./scripts/supervise.sh start)
-📱 بوت التيليجرام — رمز الاستعادة SKAIDO-RESTORE
-**استعادة كاملة: `python3 scripts/mem.py restore`**
+**المنظومة كاملة ومُختبَرة.**
+🎯 **الكود القصير:** `/workspace/sk` (42 سطراً) — استعادة كاملة في ثوانٍ
+📝 **المسجّل:** `scripts/recorder.py` — يسجّل كل رسالة تلقائياً في TRANSCRIPT.md ويدفع كل 5 دقائق
+🛡️ **الحرس:** 600ث · كاشف تكرار · reaper مستقل
+♻️ **المشرف:** 5 خدمات (الحارس، المسجّل، البوت، خادمان)
+🔒 **نسختان:** GitHub + git محلي · حجب 15 نوع سر
 <!-- /MEM:STATE -->
 
 <!-- MEM:FACTS -->
 ## حقائق دائمة
+- الاستعادة تعمل: محو .openhands/memory كاملاً ثم /workspace/sk → 17 ملفاً · 272 سطر سجل · 41 حقيقة · 196KB سجل محادثة · الخزنة تفتح
+- recorder.py: يقرأ llm_message من MessageEvent (لا message) · role في llm_message.role · يكتب TRANSCRIPT.md غير محدود + يحجب الأسرار
+- GitHub push protection يحجب أي ملف فيه سر حقيقي: أنواع اكتُشفت فعلياً = VERCEL_PERSONAL_ACCESS_TOKEN (vcp_) و GOOGLE_GCP_API_KEY_BOUND_SERVICE_ACCOUNT (AQ.) — كشفها…
+- memory.db ملف ثنائي .db لا يُدفع عبر contents API — أُعيد بناؤه من memory-export.json في restore (الذي يُصدَّر تلقائياً قبل كل دفع)
+- الكارثة التي اكتشفتها: الحارس الخلفي دفع ذاكرة فارغة فوق GitHub ومسحت 41 حقيقة → الحل: _is_empty() يرفض الدفع الفارغ + _git_backup() نسخة ثانية في git المحلي
 - الحارس المستقل (Reaper) ضروري: يقتل حتى المهمة التي لا تفحص نفسها — لأن الخيط المعلّق لا يستطيع أن يقتل نفسه
 - الاختبارات المُثبتة: الحرس يقتل عند 6ث (6.0ث فعلياً) · الحارس المستقل قتل مهمة صمّاء عند 5ث · /restore يعمل في 5.4ث
 - المشرف يفحص المنافذ (curl) لا أسماء العمليات — pgrep -f يفشل مع 'python3 server.py' الذي يعمل بـ cwd مختلف
@@ -48,13 +53,4 @@ _2026-10-25 11:35_
 - and push detail into `detail/`. Check pointers resolve (`grep -o 'detail/.*\.md'`).
 - **Memory budget: ~6000 chars combined**; over budget drops lines from the TOP. Keep this file lean
 - AGENT/QUOTA AUDIT 2026-10-24 -> `detail/free-quota-evidence-2026-10-24.md` + `detail/agent-audit-2026-10-24.md`: Kilo is the only keyless free API (200/hr/IP = 3.33…
-- PLAN v3 (`docs/plan-tts-v3.md`) is authoritative; v2 and FINAL-PLAN.md are superseded. HARD FACT: reference audio is TRUNCATED (`ENC_COND_LEN=6*16000`=6.0s, `DEC_CO…
-- Details: `detail/telegram-bot-2026-10-23.md`.
-- Cell templates keep `__TOKEN__`/`__CHAT__`/`__REF_IDS__`, rendered by `tools/make_cell.py`.
-- TELEGRAM BOT: @escaidoaiopd_bot, chat_id 5399915161. Token ONLY in `~/.escdo/telegram.json` (600).
-- sob moan pause breath stutter hes weep throat_clear.
-- [gasp] [groan] [mumble] [sniff] [cough] [clear_throat] [inhale] [UH]. Invalid: laugh scream shout
-- FIX: `_itu.clean_tags = lambda t: t`. Valid: [whisper] [shhh] [laughter] [giggle] [cry] [sigh]
-- rewrites `[tag]`->`<tag>` and the vocab has no `<tag>`, so tags shredded to chars.
-- EMOTION TAGS 2026-10-23 -> `detail/emotion-tag-rootcause-2026-10-23.md`: `iraqiTextUtil.clean_tags()`
 <!-- /MEM:FACTS -->
