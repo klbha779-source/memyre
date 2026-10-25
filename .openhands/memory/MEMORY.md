@@ -6,13 +6,14 @@
 ## الحالة الحالية
 _2026-10-25 19:24_
 
-**هاتف المستخدم TECNO LI9 (أندرويد 15، بغداد) متصل — APK v3.2 مع إصلاح 4 أسباب جذرية.**
-APK v3.2: specialUse (بلا حد زمني) + OverlayGuard (نافذة 1×1) + startForegroundService + onTimeout
-الإشعارات: فقط done/fail/blocked/ask — بلا ضجيج (أُزيل إشعار الموقع والمرحلة)
-الهاتف: /yt /open /screen /click /tap /swipe + /where /trail /track /ring /flash + /perm + ⏹ تحكم
-الكمبيوتر: control.py · notifyd.py · dashboard.py + /dash · findmy.py + /findmy · deskdo.py · escdo.sh
-https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk
-⚠️ يحتاج من المستخدم: تثبيت v3.2 + زر «صلاحيات» (فوق التطبيقات + البطارية) + «تفعيل النقر»
+**هاتف TECNO LI9 + الكمبيوتر — تحكم كامل بالاثنين.**
+🖥️ شاشة الكمبيوتر: /desk (Xvfb :99 · 1440x900 · VNC 5900) — اضغط على الصورة، اكتب، اسحب
+📱 APK v3.2 (49KB): /yt /open /screen /click + /where /trail /ring /flash + /perm
+🤖 تليجرام: /shot /click /type /key /windows /focus /close /launch /drag /rclick /scroll /vnc
+الكمبيوتر: deskctl.py · deskpanel.py · control.py · notifyd.py · dashboard.py /dash · findmy.py /findmy · escdo.sh
+الإشعارات: فقط done/fail — بلا ضجيج
+https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/desk
+⚠️ الهاتف يحتاج v3.2 + زر «صلاحيات»
 <!-- /MEM:STATE -->
 
 <!-- MEM:FACTS -->
