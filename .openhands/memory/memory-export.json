@@ -2921,10 +2921,6 @@
  "facts": [
   {
    "at": "2026-10-25 17:38",
-   "text": "المشرف ESCaiDO = design-preview/supervisor.py. يسجّل المشروع لحظة قول «افتح مشروع» ثم يدير آلة مراحل صريحة: التنظيم→التخطيط→البحث→بيانات الاعتماد→البناء→التحقق→التسليم. المرحلة 4 «بيانات الاعتماد» لها gate=kaggle_credentials: إن لم تُفتح تبقى المرحلة «محجوبة» ولا يبدأ البناء — هذا يحل المشكلة الحقيقية (الانتظار لا الفشل). ROUTING يوجّه المهمة حسب كلماتها إلى العامل المالك: codemind للأكواد · taskforge للتخطيط · dr2 للبحث · browser للواجهة · bridge للجهاز. اختبار: 5/5 توجيهات صحيحة. الجداول: projects · stages · orders · gates في supervisor.db."
-  },
-  {
-   "at": "2026-10-25 17:38",
    "text": "يد المتصفح ESCaiDO = design-preview/browserhands.py. Playwright مع launch_persistent_context (ملف تعريف دائم) + إزالة علم navigator.webdriver. حركة بشرية: human_move يرسم مساراً منحنياً مع تذبذب عمودي، human_pause تأخير متغيّر، الكتابة حرفاً حرفاً بتأخير 28-95ms. الأزرار تُبحث بالنص المرئي ثم aria-label ثم title ثم CSS — هذا ما يفتح أزرار كاجول التي لا يصلها REST API. الكوكيز في الخزنة المشفّرة عبر mem.secret_set('browser_cookies'). دروس: sync_playwright() مدير سياق فيلزم .start() (وإلا AttributeError: no attribute 'chromium')؛ وملف التعريف الدائم يقبل سياقاً واحداً فقط فيجب إغلاق السابق."
   },
   {
@@ -3030,6 +3026,10 @@
   {
    "at": "2026-10-25 18:32",
    "text": "حقيقة تقنية مؤكَّدة من مستندات أندرويد الرسمية (broadcast-exceptions): ACTION_SHUTDOWN و ACTION_BATTERY_LOW و ACTION_PACKAGE_REPLACED ليست في قائمة الاستثناءات → لا تعمل من المانيفست، تعمل فقط بـ registerReceiver() وقت التشغيل. ACTION_BOOT_COMPLETED و ACTION_LOCKED_BOOT_COMPLETED مستثناة → تعمل من المانيفست. خدمة الموقع تحتاج FOREGROUND_SERVICE_LOCATION + ACCESS_BACKGROUND_LOCATION + android:foregroundServiceType=location. هاتف مطفأ تماماً لا يستطيع أي تطبيق عادي إرسال موقع (المعالج متوقف)؛ Pixel 8+ فقط عبر شريحة بلوتوث منفصلة وبطارية محجوزة (عتاد + شبكة Find My Device)."
+  },
+  {
+   "at": "2026-10-25 18:33",
+   "text": "فخ خطير في server.py: str.replace على ' if p == \"/api/X\":' يطابق كلاً من do_GET و do_POST إن كان النص موجوداً في كليهما، فيُدرج معالج GET داخل do_POST ويحجب معالج POST الحقيقي (لأن الفحص الأول يفوز). الأعراض: POST يرد 200 لكن البيانات لا تُخزَّن أبداً. الحل: قسّم الملف عند 'def do_POST' واعمل على كل قسم منفصلاً، أو تحقّق دائماً من grep -n على كلا الدالتين بعد كل إدراج، واختبر POST فعلياً ثم GET للتأكد أن القيمة وصلت."
   }
  ],
  "state": [
