@@ -942,3 +942,7 @@ GLM FLASH 5.3 اريده بدل GLM 5.3 العادي لان العادي راح 
 
 # ✅ **التطبيق جاهز — حمّله الآن** ## 📱 **رابط التحميل** ``` https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk ``` **أو صفحة التحميل مع الشرح:** ``` https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ ``` **مُتحقَّق فعلياً:** `HTTP 200` · 29,156 بايت · `application/vnd.android.package-archive` · **مطابق بايت ببايت** ✅ --- ## 🛠️ **بنيت الـ APK فعلياً — بلا Gradle وبلا Kotlin** ``` ① نزّلت JDK 17 + Android SDK 34 (لا شيء كان موجوداً) ② aapt2 compile → الموارد ③ aapt2 link → المانيفست + R.java ④ javac → 13 صنفاً ⑤ d8 → classes.dex (575 نص · 265 دالة) ⑥ zip dex → داخل الـ APK ⑦ zipalign -p 4 → مُرتَّب ⑧ apksigner → v1+v2+v3 ✅ ``` **موقَّع:** `CN=ESCaiDO
 
+### المستخدم · 2026-10-25 17:53
+
+يريد مني توكن ماعرف ايش شنو اضيف فيه ياخي اني اريد بمجرد انزلة يبدء يتحكم بالجهاز عن طريق اوبن هاندز بدون صلاحيات ولا اي شيئ اصلا مباشرة يفتح بلجهاز
+
