@@ -2950,14 +2950,6 @@
  ],
  "facts": [
   {
-   "at": "2026-10-25 17:39",
-   "text": "طلب المستخدم: ابني لي تطبيق اي بي كي لكي يقوم بتحميله في جهازي واريد اشوف ماذا يقدر يعني يعمل في جهازي هل فعلا يقدر يتحكم بالجهاز ام لا يلا الان قم بعمل التطبيق الاي بي كي"
-  },
-  {
-   "at": "2026-10-25 17:51",
-   "text": "APK ESCaiDO Bridge مَبني فعلياً وموقَّع: design-preview/downloads/ESCaiDO-Bridge.apk (29,156 بايت · ai.escaido.bridge v1.0 · minSdk 24 · target 34 · sha256 945d236d71…). بُني بلا Gradle وبلا Kotlin: aapt2 compile → aapt2 link --auto-add-overlay (يلزم لأن strings.xml يتعارض مع الافتراضي) → javac -bootclasspath android.jar → d8 --min-api 24 → zip classes.dex في جذر APK → zipalign -p 4 → apksigner v1+v2+v3. أدوات البناء في /workspace/atools (jdk-17.0.13+11 و sdk/build-tools/34.0.0 و platforms/android-34). أخطاء حقيقية واجهتها: ApplicationInfo.system ليس حقلاً عاماً (الصحيح ai.flags & FLAG_SYSTEM)؛ aapt2 link يحتاج --auto-add-overlay؛ سكربت cmdline-tools يحتاج chmod +x بعد فك الضغط."
-  },
-  {
    "at": "2026-10-25 17:51",
    "text": "رابط تحميل APK: https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk (HTTP 200 · application/vnd.android.package-archive). أُضيف المسار إلى design-preview/server.py (يعمل على 12001) بعد return super().do_GET() بإزاحة 8 مسافات — لا 16. مهم: work-2 = 12001 = server.py (Agent Skaido)، و work-1 = 12000 = workbench. فحص التحميل الفعلي بـ curl مطابق بايت ببايت ✅. ملفات التحميل في design-preview/downloads/ (index.html + الـ APK)."
   },
@@ -3060,6 +3052,14 @@
   {
    "at": "2026-10-25 18:56",
    "text": "طلب المستخدم: وايضا هنالك مشكله في التطبيق يرسل اشعارات بشكل عشوائي بمعنى الكلمه كل شويه يرسل لي البطاريه 2% بحيث كل شوي يرسل لي اشعار مختلفه انا الاشعارات فقط اريدها مرتبطه عندما يطلب مني شيء او يكمل مهمه بنفسه يرسل لي اشعار"
+  },
+  {
+   "at": "2026-10-25 19:00",
+   "text": "الإشعارات صُفّيت (طلب المستخدم: فقط عند إنجاز مهمة أو فشلها — لا ضجيج). notifyd.py فيه ONLY=('done','fail','blocked','ask') و SENT (notify.sent) لمنع التكرار عند إعادة تشغيل المُشعر. أُزيل إشعار الموقع من server.py (كان يرسل «البطارية 2%» كل تقرير — الموقع بيانات لا خبر، يُقرأ من /findmy) وأُزيل إشعار «بدأت المرحلة» من taskforge.py. أُضيف codemind._notify_end و taskforge._notify_end: إشعار واحد عند نهاية المهمة فقط (done مع عدد المراحل، أو fail مع أسماء المراحل الفاشلة). مُختبَر: مهمتان → إشعاران بالضبط، والموقع → صفر إشعار لكنه محفوظ."
+  },
+  {
+   "at": "2026-10-25 19:00",
+   "text": "السبب الجذري لتوقف الجسر بعد دقائق (مؤكَّد من مستندات أندرويد 15 الرسمية): (1) dataSync ممنوع من BOOT_COMPLETED → ForegroundServiceStartNotAllowedException. (2) dataSync له حد 6 ساعات في 24 ثم onTimeout(). (3) SYSTEM_ALERT_WINDOW وحده لا يكفي في أندرويد 15: يجب أن تكون هناك نافذة طبقية ظاهرة قبل بدء الخدمة. (4) startService() من الخلفية ممنوع منذ أندرويد 8 → يجب startForegroundService(). الحل في v3.2: نوع specialUse (بلا حد زمني ومسموح من الإقلاع) + PROPERTY_SPECIAL_USE_FGS_SUBTYPE + FOREGROUND_SERVICE_SPECIAL_USE + OverlayGuard.java (نافذة 1×1 شفافة غير لمسية تُرفع قبل بدء الخدمة) + startForegroundService في BootReceiver/MainActivity + onTimeout يعيد تشغيل نفسه. LocationService نوعه location|specialUse."
   }
  ],
  "state": [
