@@ -4,30 +4,26 @@
 
 <!-- MEM:STATE -->
 ## الحالة الحالية
-_2026-10-25 11:08_
+_2026-10-25 11:09_
 
-_updated 2026-10-24_
-
-**SECOND WORKSTREAM — Agent Skaido AI Workbench (live now):** the React+FastAPI app in
-`workbench/` is served on **port 12000 → https://work-1-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/**
-(no Vercel). Phases 1–3 done & committed: conversation-centric UI, live task cards in the message
-stream, and an in-conversation design studio (4 designs A–D, revisions, approval, then build).
-`python3 -m workbench.tests_e2e` = **26/26 passing**. Model roster must stay `733e33360f11c8bf`.
-Full API shapes, measured timings and pitfalls: `2026-10-23.md` → "Agent Skaido AI (Phases 1–3)".
-
-**Phase:** Iraqi TTS on **LAHGTNA** (Kaggle + Telegram bot). The older **Habibi/F5-IRQ + ComfyUI**
-path is **SUPERSEDED** — do not cite it as the live stack (older entries below still mention it;
-that contradiction was the cause of confusing advice). Archived copy: `detail/memory-archive-2026-10-24.md`.
-
-**Working:** env cell + deep-clone cell + Telegram bot cell (`tools/kernel_cells/`, notebook
-`kaggle_tts/escdo_tts.ipynb`). 7 voices load on a T4. Duration buttons + scene parser pass tests.
-**Not proven:** no audio sample has ever been listened to. The CUDA `device-side assert` cause is
-**NOT established** (see below). Do not claim the TTS is fixed.
-**Next:** get the full traceback + what the audio actually sounds like, then diagnose for real.
+**المرحلة 1 مكتملة: الذاكرة الدائمة.**
+`scripts/mem.py` يحفظ كل شيء · الخزنة تحفظ المفاتيح · GitHub يحفظ نسخة خارج الحاوية.
+**الاستعادة من الصفر: `python3 scripts/mem.py restore`**
+الحد الحاسم: MEMORY.md ≤5500 حرف (النظام يحقن 6000 فقط — ما زاد يُقطع بصمت).
+المستودع البعيد عام → المفتاح لا يُدفع · الخزنة المشفّرة تُدفع.
 <!-- /MEM:STATE -->
 
 <!-- MEM:FACTS -->
 ## حقائق دائمة
+- لا تشغّل push بمجلد ذاكرة فارغ — يحمي نفسه الآن ويرفض الكتابة فوق نسخة بعيدة سليمة
+- التوكن الكلاسيكي ghp_ يملك صلاحيات كاملة؛ fine-grained كان قراءة فقط. التوكن في .env + الخزنة
+- حد الحقن 6000 حرف — MEMORY.md يجب أن يبقى ≤5500؛ الحقائق تُقصَّر إلى 165 حرفاً والكامل في memory.db
+- الحارس: scripts/mem-daemon.sh كل 15 دقيقة — snapshot + محاولة دفع (لا crontab في البيئة، حلقة خلفية)
+- الخطاف التلقائي: .agents/plugins/skaido-memory/hooks/hooks.json — UserPromptSubmit يقرأ آخر 5000 حرف في كل رسالة
+- الخزنة .openhands/vault.enc مشفّرة AES-256(CTR)+HMAC-SHA256 · المفتاح .openhands/.vaultkey متتبَّع في git
+- المستودع البعيد: klbha779-source/memyre — عام! لذلك vault.key.b64 لا يُدفع أبداً (يُحمى تلقائياً)
+- الأمر الحاسم للاستعادة الكاملة بعد فقدان كل شيء: python3 scripts/mem.py restore (يستعيد الذاكرة + القاعدة + الخزنة + .env)
+- منظومة الذاكرة الدائمة: scripts/mem.py — الأوامر: load/tail/note/fact/set/add/project/projects/compress/seal/unseal/push/pull/restore/doctor/export
 - **COUNCIL + AUTO-REPLACE 2026-10-24**: `workbench/council.py` runs a 5-lens panel (fact/logic/edge/risk/improve) per role; each lens is pinned to a DIFFERENT model …
 - **MEDIA + ROSTER 2026-10-24**: Audio works ONLY via `input_audio` (`inline_data` → 400 on the Gemini OpenAI endpoint); video works as a `data:video/mp4;base64` URL …
 - **WORKBENCH MODELS 2026-10-24**: "the models aren't connected" was really LATENCY — `gemini-3.8-flash` was first in every role chain but returns 429, so each messag…
@@ -53,11 +49,4 @@ that contradiction was the cause of confusing advice). Archived copy: `detail/me
 - **`language_id="iq"` is NOT wired to the Iraqi normalizer.** `tokenizer.py` maps the normalizer to
 - `max_text_tokens=2048`, `max_speech_tokens=4096`, vocab 2454, stop_token 6562.
 - post-processing layer (librosa time_stretch; beyond ~20% it distorts, so split the text instead).
-- cleanliness, not length. There is NO duration control in `generate()` — scene timing needs a
-- `DEC_COND_LEN=10*24000` (10.0s). Cloning from hours of audio is useless; quality comes from
-- **HARD MODEL LIMITS (Lahgtna):** reference audio is TRUNCATED — `ENC_COND_LEN=6*16000` (6.0s) and
-- ESCaiDO ON VERCEL (2026-10-24): LIVE at https://escaido-workbench.vercel.app (stable alias -> latest production). Preview: https://escaido-workbench-giicx8h5y-klbha…
-- **BIG FEATURE SET 2026-10-24**: self-repair (workbench/repair.py) = snapshot → write → VERIFY → auto-rollback; blocked paths .repair/data/.git/static/node_modules. …
-- **MODES + ALEXA + MIC 2026-10-24**: the three mode chips were DECORATIVE — `api.chat()` never sent `depth`/`search`/`council` although server.py accepted them. Now …
-- **REAL BROWSER + DEEP RESEARCH 2026-10-24**: `workbench/browser.py` drives `/usr/bin/chromium` via Playwright (goto/click/type/read/links/screenshot) and streams CD…
 <!-- /MEM:FACTS -->
