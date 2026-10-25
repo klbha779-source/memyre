@@ -1,6 +1,6 @@
 {
  "version": 1,
- "at": "2026-10-25 17:56",
+ "at": "2026-10-25 17:57",
  "log": [
   {
    "at": "2026-10-25 10:59",
@@ -2881,18 +2881,6 @@
  "facts": [
   {
    "at": "2026-10-25 14:01",
-   "text": "أخطر علّة كانت في منظومة البحث: ThreadPoolExecutor عند الخروج ينتظر كل المهام المعلّقة، فيتجاوز الموعد. الحل: ex.shutdown(wait=False, cancel_futures=True) + as_completed(timeout=...) + حد زمني لكل محرك على حدة (14ث). كذلك llm() يجب أن يستقبل deadline مطلقاً ويتوقف عن تجربة بقية النماذج بعده، وإلا فإن نموذجاً بطيئاً واحداً يأكل شريحة الطبقة كلها."
-  },
-  {
-   "at": "2026-10-25 14:01",
-   "text": "جودة البحث تتضاعف بجولات التعميق L5b (بعد النواقد): تُبحث الثغرات التي حدّدها النقّاد، ثم تُفتح دفعة المرشحين التالية، ثم يُعاد تعبئة المخزون باستعلامات جديدة من النموذج. القياس: 1د→24 مُتحقَّق · 3د→71 · 10د→179. بدون L5b كان 10د يعطي 61 فقط."
-  },
-  {
-   "at": "2026-10-25 14:01",
-   "text": "المحركات: 31 محركاً بلا مفاتيح تأكدت حياً 2026-10-25 (github, ghcode, gitlab, codeberg, hf/hfspace/hfdata, openalex, arxiv, crossref, hn, lobsters, marginalia, npm, crates, docker, nuget, maven, pypi, wiki, stack, itunes, fdroid, play, mastodon, searx, wayback, doaj, europepmc, zenodo, osf). مرفوضة نهائياً: Reddit (403) · DuckDuckGo (يحتجب) · Tavily (استُهلك 432) · SemanticScholar/AlternativeTo/Mojeek/Libraries.io/Invidious/Piped/Disboard (لا تعمل)."
-  },
-  {
-   "at": "2026-10-25 14:01",
    "text": "سلسلة النماذج dr2.LADDER (مُختبرة حياً): nemotron-3-ultra-550b (0.5ث، الأقوى والأسرع) → nemotron-3-nano-omni-30b (0.6) → nemotron-3.5-bolt-e4b (0.2) → ثم بدائل OpenRouter المجانية → deepseek-v4.1-flash في آخر السلسلة (40ث، ينتهي بمهلة). LAYER_RUNG يوزّع الطبقات على السلّم. OpenRouter المجاني يعطي 402/429 كثيراً — NVIDIA هو العمود الفقري."
   },
   {
@@ -2986,12 +2974,24 @@
   {
    "at": "2026-10-25 17:53",
    "text": "طلب المستخدم: يريد مني توكن ماعرف ايش شنو اضيف فيه ياخي اني اريد بمجرد انزلة يبدء يتحكم بالجهاز عن طريق اوبن هاندز بدون صلاحيات ولا اي شيئ اصلا مباشرة يفتح بلجهاز"
+  },
+  {
+   "at": "2026-10-25 17:57",
+   "text": "APK ESCaiDO Bridge v1.1 (بلا إعداد): التوكن TG_TOKEN ومعرّف TG_CHAT مدمجان وقت البناء داخل Engine.java (public static final String TOKEN/CHAT) ويُستخدمان في مُنشئ Engine مع fallback من SharedPreferences. التطبيق يبدأ الجسر تلقائياً عند الفتح بلا زر ولا إدخال. البنية ثلاثية: Engine.java (كل المنطق: الاستقصاء + 11 أمر + لقطة الشاشة) · BridgeService.java (Foreground Service بـ START_STICKY + إشعار دائم مرئي — يمنع أندرويد من قتل العملية عند الخروج) · MainActivity.java (شاشة + سلسلة الصلاحيات + تمرير إذن MediaProjection للمحرّك). الدليل: التوكن موجود فعلاً في classes.dex داخل الـ APK النهائي المُنزَّل (تحقّقت بفتح الـ zip وقراءة البايتات)."
+  },
+  {
+   "at": "2026-10-25 17:57",
+   "text": "درس بناء APK مهم: التوكن يجب أن يكون في الصنف الذي يستخدمه فعلاً. وضعته أولاً في MainActivity فحُذف عند إعادة كتابة الملف → التوكن غاب من الـ dex بصمت. الحماية: بعد كل بناء، تحقّق بـ `tok.encode() in zipfile.ZipFile(apk).read('classes.dex')` — لا تكتفِ بنجاح البناء. كذلك حجم الـ APK المطابق تماماً (29156) كان إشارة أن الملف القديم لم يُستبدل. بناء APK بلا Gradle: aapt2 compile → aapt2 link --auto-add-overlay → javac -bootclasspath android.jar → d8 --min-api 24 → zip classes.dex في الجذر → zipalign -p 4 → apksigner."
+  },
+  {
+   "at": "2026-10-25 17:57",
+   "text": "حقيقة صلاحيات أندرويد (يجب قولها للمستخدم): لا يمكن لأي تطبيق تخطّي نوافذ الموافقة على الصلاحيات — يفرضها النظام. أفضل ما يمكن فعله: طلبها كلها تلقائياً واحدة تلو الأخرى (سلسلة nextPermission/onRequestPermissionsResult) وطلب ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION كشاشة إعدادات. أندرويد 14 يفرض أيضاً الموافقة على MediaProjection في كل جلسة. Adb/root فقط يتخطاها."
   }
  ],
  "state": [
   {
    "k": "state",
-   "v": "**6 أنظمة مكتملة ومُختبَرة حياً + APK جاهز للتحميل.**\n🔍 **البحث:** dr2.py · 31 محركاً · ميزانية صارمة · 4 نقّاد\n🧠 **الأكواد:** codemind.py · 4 طبقات · كود خام من الصفر + فحص حقيقي + إصلاح جذري\n📋 **التخطيط:** taskforge.py · معمارية + مراحل + فحص قبول\n👔 **المشرف:** supervisor.py · آلة مراحل 7 + توجيه 5 عمال + gate للكوكيز\n🖱️ **يد المتصفح:** browserhands.py · Playwright بحركة بشرية + كوكيز في الخزنة\n🌉 **الجسر:** bridge.py (كمبيوتر) + **APK مبني وموقَّع (هاتف)** · تليجرام · المالك فقط\n📱 **تحميل الـ APK:** https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk\n🔌 **الربط:** 3 خوادم MCP (27 أداة) + 3 مهارات + 4 خطافات\n🛠️ **أدوات البناء:** /workspace/atools (JDK 17 + Android SDK 34) — بنيت الـ APK بلا Gradle"
+   "v": "**7 أنظمة مكتملة + APK جاهز يعمل بلا إعداد.**\n🔍 **البحث:** dr2.py · 31 محركاً · ميزانية صارمة · 4 نقّاد\n🧠 **الأكواد:** codemind.py · 4 طبقات · كود خام من الصفر + فحص حقيقي + إصلاح جذري\n📋 **التخطيط:** taskforge.py · معمارية + مراحل + فحص قبول\n👔 **المشرف:** supervisor.py · آلة مراحل 7 + توجيه 5 عمال + gate للكوكيز\n🖱️ **يد المتصفح:** browserhands.py · Playwright بحركة بشرية + كوكيز في الخزنة\n🌉 **الجسر:** bridge.py (كمبيوتر) + **APK (هاتف) — التوكن مدمج، يبدأ تلقائياً**\n📱 **تحميل:** https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk\n🔌 **الربط:** 3 خوادم MCP (27 أداة) + 3 مهارات + 4 خطافات\n🛠️ **أدوات البناء:** /workspace/atools (JDK 17 + Android SDK 34) · بلا Gradle"
   }
  ],
  "sections": [
