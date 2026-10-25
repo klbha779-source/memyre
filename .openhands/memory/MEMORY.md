@@ -4,20 +4,21 @@
 
 <!-- MEM:STATE -->
 ## الحالة الحالية
-_2026-10-25 18:23_
+_2026-10-25 18:25_
 
-**جسر هاتف كامل (APK v2.2) + كمبيوتر — كل شيء مبني ومُتحقَّق حياً.**
-🔍 dr2.py · 🧠 codemind.py · 📋 taskforge.py · 👔 supervisor.py · 🖱️ browserhands.py
-⏹ control.py (يوقف العمل فعلياً) · 🔔 notifyd.py (يرنّ) · 📊 dashboard.py + /dash
-🌉 APK v2.2: يرسل بصمة جهازك فوراً + يبدأ تلقائياً + يبقى يعمل + /yt /open /screen /click /tap /swipe + ⏹ تحكم + 🔔 إشعارات
-💻 deskdo.py · 🛠️ escdo.sh · بناء بلا Gradle في /workspace/atools
-📱 https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk
-📊 اللوحة: .../dash · الجهاز: .../api/device
-⚠️ يحتاج من المستخدم: تثبيت + قبول الصلاحيات + تفعيل «إمكانية الوصول» (شرط أندرويد للنقر)
+**هاتف المستخدم متصل! TECNO LI9 / اندرويد 15 / بغداد - والتطبيق v2.3 جاهز للتحكم الكامل.**
+dr2.py / codemind.py / taskforge.py / supervisor.py / browserhands.py
+control.py (يوقف العمل) / notifyd.py / dashboard.py + /dash / deskdo.py / escdo.sh
+APK v2.3: يسحب الاوامر من الخادم + بصمة الجهاز + اقلاع تلقائي + /yt /open /screen /click /tap /swipe
+https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk
+الطابور فيه الان: /yt دوباميكافين - ينفذ فور تثبيت v2.3
+المستخدم مثبت v2.1 (لا يسحب الاوامر) - يحتاج تثبيت v2.3 + تفعيل امكانية الوصول
 <!-- /MEM:STATE -->
 
 <!-- MEM:FACTS -->
 ## حقائق دائمة
+- قناة الاوامر (v2.3) - الحل لمشكلة ان البوت لا يقرأ رسائله: control.py فيه cmd_add/cmd_pending/cmd_last/cmd_result/cmd_results على .runtime/commands.jsonl و results.…
+- هاتف المستخدم متصل فعلا (2026-10-25 18:23): TECNO LI9 / mt6833 / arm64-v8a / 8 انوية / اندرويد 15 (SDK 35) / رقعة امان 2026-05-01 / نواة 6.6.102-android15 / ar_EG /…
 - فخّان وقعت فيهما: (1) قالب dashboard.py يُنسَّق بـ %-formatting — أي % حرفي في CSS (width:100%) يجب أن يكون %% وإلا TypeError: not enough arguments for format strin…
 - APK v2.2 (41,513 بايت · versionCode 5) — كل شيء مدمج: التوكن + TG_CHAT + SERVER. عند التثبيت والفتح: يرسل بصمة الجهاز الكاملة فوراً إلى POST /api/device (DeviceProf…
 - لا يمكن الوصول لهاتف المستخدم من هذه الآلة: لا adb، والهاتف ليس على شبكة الخادم. للتجربة يجب على المستخدم: (1) تنزيل APK (2) قبول الصلاحيات (3) تفعيل «إمكانية الوصو…
@@ -44,6 +45,4 @@ _2026-10-25 18:23_
 - طلب المستخدم: يا أخي الآن أريد أدوات تولز تستطيع يعني يعني النقر مثل البشر. مثلاً متى تحتاج تفتح نوتبوك جديد؟ ما أريده بشكل سطحي من النوتبوك. أريدك تدخل داخل النوتب…
 - طلب المستخدم: كم مرحلة اكملنا حتى الان مرحلة نظام الذاكرة ومرحلة نظام البحث العميق ومرحلتين مدمجة نسيتهن فقط ذكرني بشكل نصي سريع تمام الان بعد كم نظام نحتاج وما هي …
 - الربط في OpenHands بثلاث طرق لكل منظومة: (أ) خوادم MCP في .agents/mcp-design.json — escaido-deep-research (mcp_deepresearch.py) و escaido-codemind (mcp_codemind.py)…
-- أدوات فحص مثبّتة وحيّة: ruff 0.17.2 · mypy 2.4.0 (في ~/.local/bin). codemind و taskforge و mcp_codemind و dr2 و mcp_deepresearch كلها مُتحقَّقة بـ ast.parse. اختبار…
-- أخطر درسين في منظومة الأكواد: (1) كل مراحل المهمة يجب أن تتشارك مجلد عمل واحداً (workdir=self.dir) وإلا فمرحلة 3 لا ترى ملف مرحلة 2 — وهذا ما أنتج ملفاً يبدأ في منت…
 <!-- /MEM:FACTS -->
