@@ -6,13 +6,13 @@
 ## الحالة الحالية
 _2026-10-25 19:00_
 
-**هاتف المستخدم (TECNO LI9) + 10 أنظمة — APK v3.0 مع تتبع الموقع كامل.**
-🔍 dr2.py · 🧠 codemind.py · 📋 taskforge.py · 👔 supervisor.py · 🖱️ browserhands.py
-⏹ control.py · 🔔 notifyd.py · 📊 dashboard.py + /dash · 📍 findmy.py + /findmy · 💻 deskdo.py · 🛠️ escdo.sh
-📱 APK v3.0 (49KB): موقع كل 5د + تقرير إطفاء + /where /trail /track /ring /flash + /yt /open /screen /click /tap + بصمة الجهاز + إقلاع تلقائي + سحب الأوامر
-📱 https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk
-🎯 الطابور: /yt دوباميكافين — ينفَّذ فور تثبيت v3.0
-⚠️ المستخدم مثبّت v2.1 — يحتاج v3.0 + إذن الموقع + «إمكانية الوصول»
+**هاتف المستخدم TECNO LI9 (أندرويد 15، بغداد) متصل — APK v3.2 مع إصلاح 4 أسباب جذرية.**
+APK v3.2: specialUse (بلا حد زمني) + OverlayGuard (نافذة 1×1) + startForegroundService + onTimeout
+الإشعارات: فقط done/fail/blocked/ask — بلا ضجيج (أُزيل إشعار الموقع والمرحلة)
+الهاتف: /yt /open /screen /click /tap /swipe + /where /trail /track /ring /flash + /perm + ⏹ تحكم
+الكمبيوتر: control.py · notifyd.py · dashboard.py + /dash · findmy.py + /findmy · deskdo.py · escdo.sh
+https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk
+⚠️ يحتاج من المستخدم: تثبيت v3.2 + زر «صلاحيات» (فوق التطبيقات + البطارية) + «تفعيل النقر»
 <!-- /MEM:STATE -->
 
 <!-- MEM:FACTS -->
