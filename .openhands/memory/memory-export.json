@@ -1,6 +1,6 @@
 {
  "version": 1,
- "at": "2026-10-25 18:43",
+ "at": "2026-10-25 18:44",
  "log": [
   {
    "at": "2026-10-25 10:59",
@@ -2936,14 +2936,6 @@
  "facts": [
   {
    "at": "2026-10-25 17:38",
-   "text": "يد المتصفح ESCaiDO = design-preview/browserhands.py. Playwright مع launch_persistent_context (ملف تعريف دائم) + إزالة علم navigator.webdriver. حركة بشرية: human_move يرسم مساراً منحنياً مع تذبذب عمودي، human_pause تأخير متغيّر، الكتابة حرفاً حرفاً بتأخير 28-95ms. الأزرار تُبحث بالنص المرئي ثم aria-label ثم title ثم CSS — هذا ما يفتح أزرار كاجول التي لا يصلها REST API. الكوكيز في الخزنة المشفّرة عبر mem.secret_set('browser_cookies'). دروس: sync_playwright() مدير سياق فيلزم .start() (وإلا AttributeError: no attribute 'chromium')؛ وملف التعريف الدائم يقبل سياقاً واحداً فقط فيجب إغلاق السابق."
-  },
-  {
-   "at": "2026-10-25 17:38",
-   "text": "الجسر ESCaiDO = design-preview/bridge.py (كمبيوتر) + design-preview/apk (أندرويد). النقل عبر تليجرام: الوكيل يسأل getUpdates وينفّذ ويرسل النتيجة — لا منفذ مفتوح ولا IP ثابت. الأمان ثلاثي: (1) يقبل chat_id المالك فقط ويرفض ويسجّل أي مرسل آخر (2) قائمة أوامر بيضاء ALLOWED (uptime/disk/memory/cpu/os/processes/network/python/gpu) — «rm -rf /» مرفوض (3) BLOCKED_PARTS يحجب .ssh و .gnupg و Keychains و Cookies و Login Data و .env. أضفت mem.secret_set/secret_get/secret_list للخزنة (تشفير SKV1 بنفس _key/_stream/hmac، ملفات 0600 في .openhands/secrets/). APK: Kotlin + OkHttp، يقبل محادثة المالك فقط، يقرأ /sdcard فقط، يبني عبر GitHub Actions (Android SDK ~3GB ثقيل)."
-  },
-  {
-   "at": "2026-10-25 17:38",
    "text": "MCP الجديد = design-preview/mcp_control.py بـ18 أداة في .agents/mcp-design.json باسم escaido-control: project_open/dispatch/status/advance/gate (5) · browser_open/click/type/read/shot/run_all/login/save_cookies (8) · bridge_info/diag/ls/find/fetch (5). إجمالي خوادم escaido: 3 (deep-research 3 أدوات · codemind 6 أدوات · control 18 أداة) = 27 أداة. الخطافات في UserPromptSubmit: snapshot-now · research-hook · code-hook · control-hook (الأخير يكتشف كاجول/الجهاز/المشروع ويوجّه). المهارات: deep-research · raw-code · task-planning."
   },
   {
@@ -3045,6 +3037,14 @@
   {
    "at": "2026-10-25 18:33",
    "text": "فخ خطير في server.py: str.replace على ' if p == \"/api/X\":' يطابق كلاً من do_GET و do_POST إن كان النص موجوداً في كليهما، فيُدرج معالج GET داخل do_POST ويحجب معالج POST الحقيقي (لأن الفحص الأول يفوز). الأعراض: POST يرد 200 لكن البيانات لا تُخزَّن أبداً. الحل: قسّم الملف عند 'def do_POST' واعمل على كل قسم منفصلاً، أو تحقّق دائماً من grep -n على كلا الدالتين بعد كل إدراج، واختبر POST فعلياً ثم GET للتأكد أن القيمة وصلت."
+  },
+  {
+   "at": "2026-10-25 18:44",
+   "text": "السبب الجذري لعدم فتح يوتيوب فعلياً (APK v3.1): قيود Background Activity Launch في أندرويد (منذ API 29). التطبيق في الخلفية لا يستطيع فتح أي نشاط، وstartActivity لا يرفع استثناءً — يُحجب بصمت ويرد الكود 'فتحت' كذباً. الحل الموثّق رسمياً: منح SYSTEM_ALERT_WINDOW (العرض فوق التطبيقات) — لأنه مذكور صراحةً في قائمة استثناءات BAL في developer.android.com/guide/components/activities/background-starts. التنفيذ: Settings.canDrawOverlays() للفحص + ACTION_MANAGE_OVERLAY_PERMISSION لفتح شاشة المنح + ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS. الآن كل أمر فتح يفحص mayOverlay() ويقول الحقيقة في الرد بدلاً من الادعاء."
+  },
+  {
+   "at": "2026-10-25 18:44",
+   "text": "فخ بناء متكرر (وقع مرتين): بعد تعديل ملفات src/ يجب إعادة دمجها إلى build/src/ — البناء (javac) يقرأ من build/src/ وليس src/. الأعراض: error: cannot find symbol رغم أن الدالة موجودة في src/. الحل: أعد تشغيل خطوة الدمج (نسخ src → build/src مع استبدال التوكن) قبل javac. كذلك: لا تفترض وجود onResume في MainActivity — استخدم grep -n للتحقق من المرساة قبل str.replace، وإلا يُضاف الاستدعاء بلا تعريف."
   }
  ],
  "state": [
