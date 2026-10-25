@@ -2916,14 +2916,6 @@
  "facts": [
   {
    "at": "2026-10-25 16:12",
-   "text": "أخطر درسين في منظومة الأكواد: (1) كل مراحل المهمة يجب أن تتشارك مجلد عمل واحداً (workdir=self.dir) وإلا فمرحلة 3 لا ترى ملف مرحلة 2 — وهذا ما أنتج ملفاً يبدأ في منتصف حلقة. (2) يجب فحص الحزمة كاملة (import_package) لا الملف وحده: __init__.py سليم بذاته بينما الحزمة مكسورة بسبب إعادة تصدير اسم غير موجود. كذلك ملف داخل حزمة لا يُشغَّل كنص (run_module) لأن الاستيراد النسبي يحتاج سياق الحزمة. قاعدة ملزمة للكاتب: الاستيراد النسبي داخل الحزمة (from .converter import x) لا المطلق."
-  },
-  {
-   "at": "2026-10-25 16:12",
-   "text": "أدوات فحص مثبّتة وحيّة: ruff 0.17.2 · mypy 2.4.0 (في ~/.local/bin). codemind و taskforge و mcp_codemind و dr2 و mcp_deepresearch كلها مُتحقَّقة بـ ast.parse. اختبار حقيقي ناجح: طُلب «وحدة تحوّل الأعداد إلى كلمات عربية» فأنتجت حزمة arabic_numbers تعمل فعلاً: 0→صفر · 11→أحد عشر · 25→خمسة و عشرون · 1000→ألف · 1000000→مليون · -42→سالب و اثنان و أربعون، واجتازت الفحص (نظيف=True)."
-  },
-  {
-   "at": "2026-10-25 16:12",
    "text": "الربط في OpenHands بثلاث طرق لكل منظومة: (أ) خوادم MCP في .agents/mcp-design.json — escaido-deep-research (mcp_deepresearch.py) و escaido-codemind (mcp_codemind.py). (ب) مهارات في .agents/skills/ — deep-research · raw-code · task-planning. (ج) خطافات UserPromptSubmit في .agents/plugins/skaido-memory/hooks/hooks.json — snapshot-now.sh + research-hook.sh + code-hook.sh. الخطاف يقرأ الـprompt من stdin كـJSON، وcode-hook يكتشف طلبات الكود ويعرض أدوات الشركة، research-hook يكتشف «ابحث/أفضل» ويستخرج المدة ويطلق dr2 في الخلفية فوراً. لا وكيل فرعي إطلاقاً (كان يتأخر 20-30 دقيقة)."
   },
   {
@@ -3025,12 +3017,20 @@
   {
    "at": "2026-10-25 18:21",
    "text": "فخّان وقعت فيهما: (1) قالب dashboard.py يُنسَّق بـ %-formatting — أي % حرفي في CSS (width:100%) يجب أن يكون %% وإلا TypeError: not enough arguments for format string. (2) فحص وجود كلمة في ملف قبل التعديل يفشل لأن الكلمة قد تكون في موضع آخر (device كانت في viewport) — تحقّق من العبارة الفريدة التي تريد إضافتها (مثل '📱 هاتفك') لا من كلمة شائعة."
+  },
+  {
+   "at": "2026-10-25 18:25",
+   "text": "هاتف المستخدم متصل فعلا (2026-10-25 18:23): TECNO LI9 / mt6833 / arm64-v8a / 8 انوية / اندرويد 15 (SDK 35) / رقعة امان 2026-05-01 / نواة 6.6.102-android15 / ar_EG / Asia/Baghdad / شاشة 1080x2436 / 440dpi / 6.78 بوصة / ذاكرة 11637MB / تخزين 67.23GB متاح من 227.29GB / بطارية 65% 35C 3919mV Li-ion (لا تشحن) / WIFI / 26 مستشعرا / 99 تطبيقا مثبتا من 441 / يوتيوب وتيليجرام وواتساب وكروم كلها موجودة. النقر كان معطلا. التطبيق كان v2.1."
+  },
+  {
+   "at": "2026-10-25 18:25",
+   "text": "قناة الاوامر (v2.3) - الحل لمشكلة ان البوت لا يقرأ رسائله: control.py فيه cmd_add/cmd_pending/cmd_last/cmd_result/cmd_results على .runtime/commands.jsonl و results.jsonl. الخادم: GET /api/commands?since=N (الهاتف يسحب) / POST /api/command (اي طرف يضع امرا) / POST /api/result / GET /api/results. الـ APK v2.3 (versionCode 6 / 41513 بايت / dex 58240) فيه pollCommands() و postResult() في حلقة الاستقصاء - يسحب كل 25 ثانية. الاختبار: curl POST /api/command مع text=/yt دوباميكافين ثم ينفذ على الهاتف خلال ثوان. مهم: تساوي حجم APK لا يعني عدم اعادة البناء (الضغط) - تحقق دائما من sha256 ومن وجود الدالة في الـ dex."
   }
  ],
  "state": [
   {
    "k": "state",
-   "v": "**جسر هاتف كامل (APK v2.2) + كمبيوتر — كل شيء مبني ومُتحقَّق حياً.**\n🔍 dr2.py · 🧠 codemind.py · 📋 taskforge.py · 👔 supervisor.py · 🖱️ browserhands.py\n⏹ control.py (يوقف العمل فعلياً) · 🔔 notifyd.py (يرنّ) · 📊 dashboard.py + /dash\n🌉 APK v2.2: يرسل بصمة جهازك فوراً + يبدأ تلقائياً + يبقى يعمل + /yt /open /screen /click /tap /swipe + ⏹ تحكم + 🔔 إشعارات\n💻 deskdo.py · 🛠️ escdo.sh · بناء بلا Gradle في /workspace/atools\n📱 https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk\n📊 اللوحة: .../dash · الجهاز: .../api/device\n⚠️ يحتاج من المستخدم: تثبيت + قبول الصلاحيات + تفعيل «إمكانية الوصول» (شرط أندرويد للنقر)"
+   "v": "**هاتف المستخدم متصل! TECNO LI9 / اندرويد 15 / بغداد - والتطبيق v2.3 جاهز للتحكم الكامل.**\ndr2.py / codemind.py / taskforge.py / supervisor.py / browserhands.py\ncontrol.py (يوقف العمل) / notifyd.py / dashboard.py + /dash / deskdo.py / escdo.sh\nAPK v2.3: يسحب الاوامر من الخادم + بصمة الجهاز + اقلاع تلقائي + /yt /open /screen /click /tap /swipe\nhttps://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk\nالطابور فيه الان: /yt دوباميكافين - ينفذ فور تثبيت v2.3\nالمستخدم مثبت v2.1 (لا يسحب الاوامر) - يحتاج تثبيت v2.3 + تفعيل امكانية الوصول"
   }
  ],
  "sections": [
