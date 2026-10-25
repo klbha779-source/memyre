@@ -2786,13 +2786,14 @@
    "at": "2026-10-25 12:54",
    "kind": "note",
    "text": "المساعد: **عندي الصورة كاملة الآن. إليك الجواب النهائي — بالأدلة لا بالكلام.** --- # 🔬 **المقارنة: منظومتنا القديمة vs منظومات العالم** ## **ما قِسته فعلياً (لا قرأت — شغّلت)** **منظومتنا القديمة** `deepresearch.py` — 1112 سطراً · 7 طبقات · 17 محركاً: ``` بحث \"دقيقة واحدة\" → استغرق 136 ثانية = تجاوز المهلة 2.3× ⛔ L1 وحده: 29.5 ثانية (نداء LLM واحد يجمّد كل شيء) ⛔ 68 مهمة → 252 نتيجة → 3 نتائج نهائية فقط ⛔ L5 يتحقق من 4-12 موقعاً تسلسلياً (3.5ث لكل موقع) ⛔ ``` **وهذا بالضبط ما شكوت منه:** «أقول له ابحث دقيقة، يبحث ساعة». ## **منظومات العالم (أرقام حقيقية من GitHub الآن)** | المنظومة | ★ | المعمارية | الرقم القياسي | الدرس | |---|---|---|---|---| | **MiroThinker 1.7** | 8,425 | RL-trained search | **88"
+  },
+  {
+   "at": "2026-10-25 13:00",
+   "kind": "note",
+   "text": "المستخدم: تمام ابدا الان بهذه الخطه وكما قلت لك عندما تريد ان تبحث بان الان فصاعدا لا تبحث في ابحث في منظوماتنا الجديده ومنظوماتنا الجديده اجعلها من ضمن الام سي بي او المهارات او الخطافات لكي يعني يكون البحث فيها فعله صحيح عندما نطلبها في اي وقت على مدار الساعه 24 ساعه بمجرد ان اقول له ابحث لي الان في منصه او ابحث لي عن منصه او عندما يحتاج يعني يكون هناك نظام ذكي يعرف عندما يحتاج الى سؤال او يحتاج الى حل ليذهب الى البحث العميق مثلا لديك او مثلا انت تكون في مهمه صعبه واحتجت الى ان تبحث عن معلومه او ميزه جديده فتستعمل النظام البحث العميق مهما كان تبحث عميق وتستدعى هذا النموذج او النظام فاريد النظام متفعل دائما والى الابد لا ينسى ولا يمحى ابدا وتعبادا نظام كامل متكامل يلا الان ابدا بالتنفيذ الفوري"
   }
  ],
  "facts": [
-  {
-   "at": "2026-10-25 10:59",
-   "text": "**MEDIA + ROSTER 2026-10-24**: Audio works ONLY via `input_audio` (`inline_data` → 400 on the Gemini OpenAI endpoint); video works as a `data:video/mp4;base64` URL in the ordinary `image_url` part. Only Gemini models accept these — NVIDIA silently ignores them. The provider catalogue advertises models that return **410 Gone**, so model lists must come from a live probe, never from `/v1/models`. `laguna-xs` is fastest (198ms) but intermittently 503s → use as fallback, not chain lead. The 1054 kB entry chunk was mermaid imported eagerly; `import('mermaid')` + `manualChunks` cut it to **47 kB** (DOMContentLoaded 124ms). Phone bug: the work panel is a fixed overlay under 920px and defaulted to open, covering the screen and eating taps."
-  },
   {
    "at": "2026-10-25 10:59",
    "text": "**COUNCIL + AUTO-REPLACE 2026-10-24**: `workbench/council.py` runs a 5-lens panel (fact/logic/edge/risk/improve) per role; each lens is pinned to a DIFFERENT model (`DIVERSITY_POOL`) because 5 critics on one model share its blind spots. The lead synthesises and must end with \"تعديلات مقبولة: N\". Auto-replace: 2 consecutive failures → model benched, and only a model of the SAME ROLE is promoted (never swap a reasoning model for a cheap chat model). Kilo `https://api.kilo.ai/api/gateway/v1` is KEYLESS and serves nemotron-3-ultra-550b:free — verify with a bogus-path control (HTTP 400 = genuine; HTTP 200 'OK' = proxy interception). Never send an empty Bearer token to a keyless provider."
@@ -2932,6 +2933,10 @@
   {
    "at": "2026-10-25 12:51",
    "text": "طلب المستخدم: ياخي لا تشغل هذا الوكيل الفرعي وكيل فرعي: web-researcher هذا الوكيل يتاخر جدا في الرد اريدك تستبدله بخطاف سريع او ام سي بي مختلف ولكن سريع في البحث هذا الوكيل جدا جدا بطيء في البحث عندما يعني يبحث يكتب لي جاري تشغيل الوكيل الفرعي ويتاخر بمعنى الكلمه يتاخر فوق ال 20 او 30 دقيقه من اجل بحث سريع فحل هذه المشكله يا اخي على هذا استبدل هذا الويب بالكامل"
+  },
+  {
+   "at": "2026-10-25 13:00",
+   "text": "طلب المستخدم: تمام ابدا الان بهذه الخطه وكما قلت لك عندما تريد ان تبحث بان الان فصاعدا لا تبحث في ابحث في منظوماتنا الجديده ومنظوماتنا الجديده اجعلها من ضمن الام سي بي او المهارات او الخطافات لكي يعني يكون البحث فيها فعله صحيح عندما نطلبها في اي وقت على مدار الساعه 24 ساعه بمجرد ان اقول له ابحث لي الان في منصه او ابحث لي عن منصه او عندما يحتاج يعني يكون هناك نظام ذكي يعرف عندما يحتاج الى سؤال او يحتاج الى حل لي"
   }
  ],
  "state": [
