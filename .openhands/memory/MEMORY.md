@@ -4,19 +4,21 @@
 
 <!-- MEM:STATE -->
 ## الحالة الحالية
-_2026-10-25 18:29_
+_2026-10-25 18:32_
 
-**هاتف المستخدم متصل! TECNO LI9 / اندرويد 15 / بغداد - والتطبيق v2.3 جاهز للتحكم الكامل.**
-dr2.py / codemind.py / taskforge.py / supervisor.py / browserhands.py
-control.py (يوقف العمل) / notifyd.py / dashboard.py + /dash / deskdo.py / escdo.sh
-APK v2.3: يسحب الاوامر من الخادم + بصمة الجهاز + اقلاع تلقائي + /yt /open /screen /click /tap /swipe
-https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk
-الطابور فيه الان: /yt دوباميكافين - ينفذ فور تثبيت v2.3
-المستخدم مثبت v2.1 (لا يسحب الاوامر) - يحتاج تثبيت v2.3 + تفعيل امكانية الوصول
+**هاتف المستخدم (TECNO LI9) + 10 أنظمة — APK v3.0 مع تتبع الموقع كامل.**
+🔍 dr2.py · 🧠 codemind.py · 📋 taskforge.py · 👔 supervisor.py · 🖱️ browserhands.py
+⏹ control.py · 🔔 notifyd.py · 📊 dashboard.py + /dash · 📍 findmy.py + /findmy · 💻 deskdo.py · 🛠️ escdo.sh
+📱 APK v3.0 (49KB): موقع كل 5د + تقرير إطفاء + /where /trail /track /ring /flash + /yt /open /screen /click /tap + بصمة الجهاز + إقلاع تلقائي + سحب الأوامر
+📱 https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk
+🎯 الطابور: /yt دوباميكافين — ينفَّذ فور تثبيت v3.0
+⚠️ المستخدم مثبّت v2.1 — يحتاج v3.0 + إذن الموقع + «إمكانية الوصول»
 <!-- /MEM:STATE -->
 
 <!-- MEM:FACTS -->
 ## حقائق دائمة
+- حقيقة تقنية مؤكَّدة من مستندات أندرويد الرسمية (broadcast-exceptions): ACTION_SHUTDOWN و ACTION_BATTERY_LOW و ACTION_PACKAGE_REPLACED ليست في قائمة الاستثناءات → لا…
+- الموقع والتتبع (APK v3.0 / versionCode 7 / 49705 بايت / dex 72160). LocationService.java: خدمة أمامية بنوع location، تسجّل ACTION_SHUTDOWN و ACTION_BATTERY_LOW في و…
 - طلب المستخدم: رتب الان الاوامر وجعله يستطيع التحكم بالهاتف بشكل فعلي حقيقي وضيف فيه ميزه بحيث يعني في اوبنهانديز يعني نضيف فيه ميزه يحفظ يعني الموقع ويتتبع الموقع ب…
 - قناة الاوامر (v2.3) - الحل لمشكلة ان البوت لا يقرأ رسائله: control.py فيه cmd_add/cmd_pending/cmd_last/cmd_result/cmd_results على .runtime/commands.jsonl و results.…
 - هاتف المستخدم متصل فعلا (2026-10-25 18:23): TECNO LI9 / mt6833 / arm64-v8a / 8 انوية / اندرويد 15 (SDK 35) / رقعة امان 2026-05-01 / نواة 6.6.102-android15 / ar_EG /…
@@ -43,6 +45,4 @@ https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.ap
 - الجسر ESCaiDO = design-preview/bridge.py (كمبيوتر) + design-preview/apk (أندرويد). النقل عبر تليجرام: الوكيل يسأل getUpdates وينفّذ ويرسل النتيجة — لا منفذ مفتوح ول…
 - يد المتصفح ESCaiDO = design-preview/browserhands.py. Playwright مع launch_persistent_context (ملف تعريف دائم) + إزالة علم navigator.webdriver. حركة بشرية: human_mov…
 - المشرف ESCaiDO = design-preview/supervisor.py. يسجّل المشروع لحظة قول «افتح مشروع» ثم يدير آلة مراحل صريحة: التنظيم→التخطيط→البحث→بيانات الاعتماد→البناء→التحقق→التس…
-- طلب المستخدم: يا أخي الآن أريد أدوات تولز تستطيع يعني يعني النقر مثل البشر. مثلاً متى تحتاج تفتح نوتبوك جديد؟ ما أريده بشكل سطحي من النوتبوك. أريدك تدخل داخل النوتب…
-- طلب المستخدم: كم مرحلة اكملنا حتى الان مرحلة نظام الذاكرة ومرحلة نظام البحث العميق ومرحلتين مدمجة نسيتهن فقط ذكرني بشكل نصي سريع تمام الان بعد كم نظام نحتاج وما هي …
 <!-- /MEM:FACTS -->
