@@ -2761,26 +2761,6 @@
  "facts": [
   {
    "at": "2026-10-25 10:59",
-   "text": "**Memory budget: ~6000 chars combined**; over budget drops lines from the TOP. Keep this file lean"
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "and push detail into `detail/`. Check pointers resolve (`grep -o 'detail/.*\\.md'`)."
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "**NVIDIA KEY (measured 2026-10-24) -> `detail/nvidia-key-measurements-2026-10-24.md`:** works. Only 4/85 models usable: **`z-ai/glm-5.3`** (free HERE — plans claimed it was paid), `z-ai/glm-5.3-flash`, **`minimaxai/minimax-m3.1-flash`** (fastest), `openai/gpt-oss-20b`. Rate limit **5 req then 429**, ~90s recovery, ~15/hr/model, per-model. Official docs URL is 404 so the limit is MEASURED (public '40 RPM' claim is wrong). glm-5.3 needs max_tokens>=1000."
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "**GEMINI KEY (measured 2026-10-24) -> `detail/gemini-key-measurements-2026-10-24.md`:** works via OpenAI-compatible `/v1beta/openai/chat/completions` (Bearer) so it plugs into LiteLLM directly; tool calling verified. **`\"limit\": 20` + `quotaId: ...PerDayPerProjectPerModel-FreeTier` = 20 req/DAY PER MODEL**; 5 RPM. Pro is limit=0; only 5 of 46 listed models usable."
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "**REVISED CAPACITY 2026-10-24:** Gemini 100/day + NVIDIA ~100-400/day + Kilo 200/hr ⇒ **~300-700 req/day** vs the 1000-2000 target. Improved ~3x with the NVIDIA key but still 2-5x short — never claim the target is met."
-  },
-  {
-   "at": "2026-10-25 10:59",
    "text": "**REPORTS written to `reports/` (2026-10-24):** ESCaiDO_BRAIN_RESEARCH.md (main, Arabic),"
   },
   {
@@ -2910,12 +2890,28 @@
   {
    "at": "2026-10-25 12:06",
    "text": "طلب المستخدم: اريد اخر دقائق قبل اغلاق محفوظه ايضا يعني ما اريد اخر دقائق يعني مثلا لو كنت انا معه في موضوع مهم وتم اغلاق المحادثه كيف سيعرف النظام الجديد بالمحادثه قبل الاخيره اللي اخر رساله وصلت"
+  },
+  {
+   "at": "2026-10-25 12:13",
+   "text": "الثغرة القاتلة التي طلب إصلاحها المستخدم: 'آخر دقائق قبل إغلاق المحادثة'. الحل 4 طبقات: (1) خطاف UserPromptSubmit يدفع فوراً عند كل رسالة قبل أن يبدأ الوكيل بالرد (2) المسجّل يدفع بعد كل دور جديد (3) مهلة احتياطية 45ث (4) flush عند SIGTERM/SIGINT/atexit"
+  },
+  {
+   "at": "2026-10-25 12:13",
+   "text": "الأداء: push() كان 19ث → صار 0.5ث بـ .pushed.json (بصمات sha256؛ الملفات غير المتغيرة تُتجاهل). يجب استثناء .pushed.json نفسه من الدفع وإلا يُبطل بصماته"
+  },
+  {
+   "at": "2026-10-25 12:13",
+   "text": "قفل .runtime/recorder.lock (90ث) ضروري: الخطاف يُنفَّذ عند كل رسالة، و3 رسائل سريعة = 3 عمليات متزامنة تسجّل نفس الدور 3 مرات. أُضيف أيضاً منع تكرار في record() يقارن نهاية السجل"
+  },
+  {
+   "at": "2026-10-25 12:13",
+   "text": "ملف الخطافات الفعلي: .agents/plugins/skaido-memory/hooks/hooks.json (فيه UserPromptSubmit + SessionStart). الخطاف لا يعمل في الجلسة الجارية إن أُضيف بعد بدئها — يعمل في المحادثة التالية"
   }
  ],
  "state": [
   {
    "k": "state",
-   "v": "**المنظومة كاملة ومُختبَرة.**\n🎯 **الكود القصير:** `/workspace/sk` (42 سطراً) — استعادة كاملة في ثوانٍ\n📝 **المسجّل:** `scripts/recorder.py` — يسجّل كل رسالة تلقائياً في TRANSCRIPT.md ويدفع كل 5 دقائق\n🛡️ **الحرس:** 600ث · كاشف تكرار · reaper مستقل\n♻️ **المشرف:** 5 خدمات (الحارس، المسجّل، البوت، خادمان)\n🔒 **نسختان:** GitHub + git محلي · حجب 15 نوع سر"
+   "v": "**المرحلة 3: حماية آخر لحظة — مُنجزة.**\n⏱️ **الخطاف:** كل رسالة ترسلها → تُدفع قبل أن أرد (UserPromptSubmit)\n⚡ **سرعة الدفع:** 19ث → **0.5ث** (بصمات sha256)\n🔒 **قفل:** يمنع 3 رسائل سريعة من التسجيل 3 مرات\n🚪 **flush عند الإغلاق:** SIGTERM/SIGINT/atexit\n✅ **مُختبَر:** رسالة جديدة → GitHub في 3 ثوان"
   }
  ],
  "sections": [
