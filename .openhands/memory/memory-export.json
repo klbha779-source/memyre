@@ -1,6 +1,6 @@
 {
  "version": 1,
- "at": "2026-10-25 11:08",
+ "at": "2026-10-25 11:09",
  "log": [
   {
    "at": "2026-10-25 10:59",
@@ -29,34 +29,6 @@
   }
  ],
  "facts": [
-  {
-   "at": "2026-10-25 10:59",
-   "text": "**REAL BROWSER + DEEP RESEARCH 2026-10-24**: `workbench/browser.py` drives `/usr/bin/chromium` via Playwright (goto/click/type/read/links/screenshot) and streams CDP screencast JPEGs over WS `/api/browser/live` (~5fps). CDP emits NOTHING for an idle page → seed a frame on connect + re-send last frame as heartbeat. crawl4ai does NOT work here (needs Playwright-managed browsers; BrowserConfig has no executable_path). `workbench/research.py` searches GitHub+GitLab+HF only, ~400 pages/min. GraphQL `totalCount` is the ONLY reliable issue population — REST `/repos/x/issues` returns mostly PULL REQUESTS in busy repos. Word-count sentiment over issue text is useless as a primary signal (issue text is inherently negative) → use a health score (resolution 0.40, open-pressure 0.25, recency 0.15, popularity 0.10, licence 0.10, sentiment 0.10); >=0.70 keep. `search/issues` 403s transiently at 30/min → retry 3x. NEVER evaluate a helper inside the `out.update({...})` literal that is still being built — it sees stale/missing keys."
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "**MODES + ALEXA + MIC 2026-10-24**: the three mode chips were DECORATIVE — `api.chat()` never sent `depth`/`search`/`council` although server.py accepted them. Now one named mode menu (8 modes) wired to real options. Alexa: `/api/transcribe` (audio model) + `/api/alexa` (reply spoken locally via SpeechSynthesis, 3 pitch/rate voice profiles). The transcription prompt MUST be strict (\"write down ONLY the spoken words… if none output فارغ\") or the model answers the speech instead of transcribing. `store.create_conversation()` returns the id STRING not a dict. Mic uses MediaRecorder → /api/transcribe. Device adaptation: main.tsx sets `data-dev`/`data-touch`/`--vh` before first paint; a fixed 100vh overflows on mobile because URL bars change innerHeight. Phone mode menus must be `position:fixed;left:8px;right:8px` or they overflow at 360px."
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "**BIG FEATURE SET 2026-10-24**: self-repair (workbench/repair.py) = snapshot → write → VERIFY → auto-rollback; blocked paths .repair/data/.git/static/node_modules. Site builder (workbench/sites.py) two-stage preview→build. Bridge (workbench/bridge_agent.py + /ws/bridge) is CONSENT-BASED: user runs it, types yes, every command prints locally, no shell, no persistence, connection goes OUT from the user's machine. MCP server (workbench/mcp_server.py) stdio JSON-RPC with 5 tools. Telegram real (@escaidoaiopd_bot), webhook /api/telegram/webhook, NOT intercepted. UI now 9 tabs. MEASURED GOTCHAS: (a) max_tokens=8000 TRUNCATES output at ~3200 chars and 4000 fails outright → generate long HTML in ~4000-token chunks with continuation; (b) PER_MODEL_TIMEOUT 45s kills full-page generation → call_with_failover now takes `timeout=`; (c) 3 sequential site previews = 220s, asyncio.gather = 105s; (d) the live browser frame is letterboxed so click mapping must go through the drawn rect not the element box; (e) `httpx` was missing from server.py imports."
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "ESCaiDO ON VERCEL (2026-10-24): LIVE at https://escaido-workbench.vercel.app (stable alias -> latest production). Preview: https://escaido-workbench-giicx8h5y-klbha779-sources-projects.vercel.app. Project `escaido-workbench`, rootDirectory `workbench/ui`, Vercel token in `~/.escdo/vercel.env` (600), CLI at `~/.local/bin/vercel`. The static UI talks to the FastAPI backend cross-origin via VITE_API_BASE + ESCDO_ALLOWED_ORIGINS (CORS + SameSite=None;Secure cookie). FOUR deploy traps, in order: (1) don't set buildCommand/outputDirectory in vercel.json when using rootDirectory, Vercel then reports STATIC_BUILD_NO_OUT_DIR; (2) vite.config.ts must switch base '/ui/'->'/' and outDir '../static/ui'->'dist' when process.env.VERCEL; (3) Deployment Protection defaults to all_except_custom_domains and returns Vercel's own Next.js SSO page (`/_next/`, `data-dpl-id`) instead of the app - disable with PATCH /v9/projects/{name} {\"ssoProtection\":null}; (4) THE SUBTLE ONE: adding a configurable API base is not enough - grep EVERY raw `fetch('/api`, `EventSource` and `new WebSocket(` call site (Login.tsx included), not just lib/api.ts. Owner password is ESCAESCA2006 in .runtime/owner_token.txt with 6-fail/300s login lockout."
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "**HARD MODEL LIMITS (Lahgtna):** reference audio is TRUNCATED — `ENC_COND_LEN=6*16000` (6.0s) and"
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "`DEC_COND_LEN=10*24000` (10.0s). Cloning from hours of audio is useless; quality comes from"
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "cleanliness, not length. There is NO duration control in `generate()` — scene timing needs a"
-  },
   {
    "at": "2026-10-25 10:59",
    "text": "post-processing layer (librosa time_stretch; beyond ~20% it distorts, so split the text instead)."
@@ -156,12 +128,48 @@
   {
    "at": "2026-10-25 10:59",
    "text": "**COUNCIL + AUTO-REPLACE 2026-10-24**: `workbench/council.py` runs a 5-lens panel (fact/logic/edge/risk/improve) per role; each lens is pinned to a DIFFERENT model (`DIVERSITY_POOL`) because 5 critics on one model share its blind spots. The lead synthesises and must end with \"تعديلات مقبولة: N\". Auto-replace: 2 consecutive failures → model benched, and only a model of the SAME ROLE is promoted (never swap a reasoning model for a cheap chat model). Kilo `https://api.kilo.ai/api/gateway/v1` is KEYLESS and serves nemotron-3-ultra-550b:free — verify with a bogus-path control (HTTP 400 = genuine; HTTP 200 'OK' = proxy interception). Never send an empty Bearer token to a keyless provider."
+  },
+  {
+   "at": "2026-10-25 11:09",
+   "text": "منظومة الذاكرة الدائمة: scripts/mem.py — الأوامر: load/tail/note/fact/set/add/project/projects/compress/seal/unseal/push/pull/restore/doctor/export"
+  },
+  {
+   "at": "2026-10-25 11:09",
+   "text": "الأمر الحاسم للاستعادة الكاملة بعد فقدان كل شيء: python3 scripts/mem.py restore (يستعيد الذاكرة + القاعدة + الخزنة + .env)"
+  },
+  {
+   "at": "2026-10-25 11:09",
+   "text": "المستودع البعيد: klbha779-source/memyre — عام! لذلك vault.key.b64 لا يُدفع أبداً (يُحمى تلقائياً)"
+  },
+  {
+   "at": "2026-10-25 11:09",
+   "text": "الخزنة .openhands/vault.enc مشفّرة AES-256(CTR)+HMAC-SHA256 · المفتاح .openhands/.vaultkey متتبَّع في git"
+  },
+  {
+   "at": "2026-10-25 11:09",
+   "text": "الخطاف التلقائي: .agents/plugins/skaido-memory/hooks/hooks.json — UserPromptSubmit يقرأ آخر 5000 حرف في كل رسالة"
+  },
+  {
+   "at": "2026-10-25 11:09",
+   "text": "الحارس: scripts/mem-daemon.sh كل 15 دقيقة — snapshot + محاولة دفع (لا crontab في البيئة، حلقة خلفية)"
+  },
+  {
+   "at": "2026-10-25 11:09",
+   "text": "حد الحقن 6000 حرف — MEMORY.md يجب أن يبقى ≤5500؛ الحقائق تُقصَّر إلى 165 حرفاً والكامل في memory.db"
+  },
+  {
+   "at": "2026-10-25 11:09",
+   "text": "التوكن الكلاسيكي ghp_ يملك صلاحيات كاملة؛ fine-grained كان قراءة فقط. التوكن في .env + الخزنة"
+  },
+  {
+   "at": "2026-10-25 11:09",
+   "text": "لا تشغّل push بمجلد ذاكرة فارغ — يحمي نفسه الآن ويرفض الكتابة فوق نسخة بعيدة سليمة"
   }
  ],
  "state": [
   {
    "k": "state",
-   "v": "_updated 2026-10-24_\n\n**SECOND WORKSTREAM — Agent Skaido AI Workbench (live now):** the React+FastAPI app in\n`workbench/` is served on **port 12000 → https://work-1-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/**\n(no Vercel). Phases 1–3 done & committed: conversation-centric UI, live task cards in the message\nstream, and an in-conversation design studio (4 designs A–D, revisions, approval, then build).\n`python3 -m workbench.tests_e2e` = **26/26 passing**. Model roster must stay `733e33360f11c8bf`.\nFull API shapes, measured timings and pitfalls: `2026-10-23.md` → \"Agent Skaido AI (Phases 1–3)\".\n\n**Phase:** Iraqi TTS on **LAHGTNA** (Kaggle + Telegram bot). The older **Habibi/F5-IRQ + ComfyUI**\npath is **SUPERSEDED** — do not cite it as the live stack (older entries below still mention it;\nthat contradiction was the cause of confusing advice). Archived copy: `detail/memory-archive-2026-10-24.md`.\n\n**Working:** env cell + deep-clone cell + Telegram bot cell (`tools/kernel_cells/`, notebook\n`kaggle_tts/escdo_tts.ipynb`). 7 voices load on a T4. Duration buttons + scene parser pass tests.\n**Not proven:** no audio sample has ever been listened to. The CUDA `device-side assert` cause is\n**NOT established** (see below). Do not claim the TTS is fixed.\n**Next:** get the full traceback + what the audio actually sounds like, then diagnose for real."
+   "v": "**المرحلة 1 مكتملة: الذاكرة الدائمة.**\n`scripts/mem.py` يحفظ كل شيء · الخزنة تحفظ المفاتيح · GitHub يحفظ نسخة خارج الحاوية.\n**الاستعادة من الصفر: `python3 scripts/mem.py restore`**\nالحد الحاسم: MEMORY.md ≤5500 حرف (النظام يحقن 6000 فقط — ما زاد يُقطع بصمت).\nالمستودع البعيد عام → المفتاح لا يُدفع · الخزنة المشفّرة تُدفع."
   }
  ],
  "sections": [
@@ -180,14 +188,14 @@
   {
    "proj": "ESCaiDO",
    "k": "done",
-   "v": "v19 بحث عميق: 17 محركاً · 8 طبقات · تحقق بمتصفح حقيقي · 3/3 نجاح\nv18 agent.js · v17 real.js\nWorkbench phases 1-3 · 26/26 اختبار",
-   "at": "2026-10-25 10:59"
+   "v": "منظومة الذاكرة الدائمة v1 مكتملة ومُختبَرة (محو شامل ثم restore = 16/16) · بحث عميق 7 طبقات (deepresearch.py) · Workbench 26/26",
+   "at": "2026-10-25 11:09"
   },
   {
    "proj": "ESCaiDO",
    "k": "next",
-   "v": "دفع الذاكرة إلى klbha779-source/memyre (يحتاج توكن Contents: Read and write)\nربط engram MCP\nAGENTS.md",
-   "at": "2026-10-25 10:59"
+   "v": "المرحلة 2: ربط engram MCP (7.6k⭐) · المرحلة 3: استضافة LTX 2.5",
+   "at": "2026-10-25 11:09"
   },
   {
    "proj": "ESCaiDO",
