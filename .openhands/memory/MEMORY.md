@@ -4,7 +4,7 @@
 
 <!-- MEM:STATE -->
 ## الحالة الحالية
-_2026-10-25 19:00_
+_2026-10-25 19:09_
 
 **هاتف المستخدم TECNO LI9 (أندرويد 15، بغداد) متصل — APK v3.2 مع إصلاح 4 أسباب جذرية.**
 APK v3.2: specialUse (بلا حد زمني) + OverlayGuard (نافذة 1×1) + startForegroundService + onTimeout
