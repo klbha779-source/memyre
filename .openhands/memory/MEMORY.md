@@ -4,19 +4,22 @@
 
 <!-- MEM:STATE -->
 ## الحالة الحالية
-_2026-10-25 18:19_
+_2026-10-25 18:21_
 
-**9 أنظمة + جسر هاتف (APK v2.1) وكمبيوتر — كل شيء مبني ومُتحقَّق.**
+**جسر هاتف كامل (APK v2.2) + كمبيوتر — كل شيء مبني ومُتحقَّق حياً.**
 🔍 dr2.py · 🧠 codemind.py · 📋 taskforge.py · 👔 supervisor.py · 🖱️ browserhands.py
-⏹ control.py (يوقف العمل فعلياً) · 🔔 notifyd.py (يرنّ على تليجرام) · 📊 dashboard.py + /dash
-🌉 APK v2.1 (هاتف): /yt · /url · /open · /screen · /click · /tap · /swipe · ⏹ التحكم · 🔔 إشعارات
-💻 deskdo.py (كمبيوتر) · 🛠️ escdo.sh يشغّل الكل · بناء بلا Gradle في /workspace/atools
+⏹ control.py (يوقف العمل فعلياً) · 🔔 notifyd.py (يرنّ) · 📊 dashboard.py + /dash
+🌉 APK v2.2: يرسل بصمة جهازك فوراً + يبدأ تلقائياً + يبقى يعمل + /yt /open /screen /click /tap /swipe + ⏹ تحكم + 🔔 إشعارات
+💻 deskdo.py · 🛠️ escdo.sh · بناء بلا Gradle في /workspace/atools
 📱 https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk
-⚠️ الهاتف لم يتصل بعد — يحتاج تنزيل + صلاحيات + تفعيل «إمكانية الوصول» (شرط أندرويد للنقر)
+📊 اللوحة: .../dash · الجهاز: .../api/device
+⚠️ يحتاج من المستخدم: تثبيت + قبول الصلاحيات + تفعيل «إمكانية الوصول» (شرط أندرويد للنقر)
 <!-- /MEM:STATE -->
 
 <!-- MEM:FACTS -->
 ## حقائق دائمة
+- فخّان وقعت فيهما: (1) قالب dashboard.py يُنسَّق بـ %-formatting — أي % حرفي في CSS (width:100%) يجب أن يكون %% وإلا TypeError: not enough arguments for format strin…
+- APK v2.2 (41,513 بايت · versionCode 5) — كل شيء مدمج: التوكن + TG_CHAT + SERVER. عند التثبيت والفتح: يرسل بصمة الجهاز الكاملة فوراً إلى POST /api/device (DeviceProf…
 - لا يمكن الوصول لهاتف المستخدم من هذه الآلة: لا adb، والهاتف ليس على شبكة الخادم. للتجربة يجب على المستخدم: (1) تنزيل APK (2) قبول الصلاحيات (3) تفعيل «إمكانية الوصو…
 - درس تحقّق مهم: لا تبحث عن الدوال في classes.dex بصيغة الاستدعاء (b'youtube(') — أسماء الدوال تُخزَّن في مجمّع النصوص بلا قوس (b'youtube'). البحث الخاطئ يعطي ⛔ كاذبا…
 - APK v2.1 (37KB) — أوامر التحكم بالهاتف: /yt [بحث] (يفتح يوتيوب ويبحث مباشرة عبر https://www.youtube.com/results?search_query= مع setPackage ثم fallback) · /url [راب…
