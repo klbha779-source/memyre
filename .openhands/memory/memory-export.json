@@ -1,6 +1,6 @@
 {
  "version": 1,
- "at": "2026-10-25 11:18",
+ "at": "2026-10-25 11:21",
  "log": [
   {
    "at": "2026-10-25 10:59",
@@ -26,25 +26,39 @@
    "at": "2026-10-25 11:08",
    "kind": "note",
    "text": "المنظومة نهائية: 10/11 فحوصاً ✅ · الاستعادة الكاملة مُختبَرة (محو شامل → restore → 16/16)"
+  },
+  {
+   "at": "2026-10-25 10:59",
+   "kind": "note",
+   "text": "بُنيت منظومة الذاكرة الدائمة: mem.py + خزنة مشفّرة AES + مرآة GitHub + 32 حقيقة + ملف مشروع ESCaiDO"
+  },
+  {
+   "at": "2026-10-25 10:59",
+   "kind": "note",
+   "text": "التوكن fine-grained بلا صلاحية Contents:Read-and-write — الدفع ينتظر الإصلاح"
+  },
+  {
+   "at": "2026-10-25 11:00",
+   "kind": "note",
+   "text": "اكتملت منظومة الذاكرة: mem.py + خزنة AES (6 مفاتيح) + AGENTS.md + خطاف تلقائي + حارس كل 15 دقيقة + 32 حقيقة مُحقَنة في 5476 حرف"
+  },
+  {
+   "at": "2026-10-25 11:00",
+   "kind": "note",
+   "text": "التوكن الجديد في الخزنة · اختبار الاسترجاع نجح"
+  },
+  {
+   "at": "2026-10-25 11:08",
+   "kind": "note",
+   "text": "المنظومة نهائية: 10/11 فحوصاً ✅ · الاستعادة الكاملة مُختبَرة (محو شامل → restore → 16/16)"
+  },
+  {
+   "at": "2026-10-25 11:21",
+   "kind": "note",
+   "text": "المنظومة كاملة: 4/4 خدمات · الحرس مُختبَر · /restore يعمل · بدء تلقائي · 45 حقيقة"
   }
  ],
  "facts": [
-  {
-   "at": "2026-10-25 10:59",
-   "text": "post-processing layer (librosa time_stretch; beyond ~20% it distorts, so split the text instead)."
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "`max_text_tokens=2048`, `max_speech_tokens=4096`, vocab 2454, stop_token 6562."
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "**`language_id=\"iq\"` is NOT wired to the Iraqi normalizer.** `tokenizer.py` maps the normalizer to"
-  },
-  {
-   "at": "2026-10-25 10:59",
-   "text": "`\"no\"` (Norwegian code reused). `\"iq\"` emits an `[iq]` token with no normalization. Needs an A/B test."
-  },
   {
    "at": "2026-10-25 10:59",
    "text": "EMOTION TAGS 2026-10-23 -> `detail/emotion-tag-rootcause-2026-10-23.md`: `iraqiTextUtil.clean_tags()`"
@@ -188,6 +202,26 @@
   {
    "at": "2026-10-25 11:18",
    "text": "الأمر الحاسم: python3 scripts/mem.py restore يستعيد الذاكرة + القاعدة + الخزنة + .env من GitHub"
+  },
+  {
+   "at": "2026-10-25 11:21",
+   "text": "البدء التلقائي: .agents/plugins/skaido-memory/hooks/startup.sh يُشغّل scripts/supervise.sh في كل جلسة (SessionStart) — idempotent"
+  },
+  {
+   "at": "2026-10-25 11:21",
+   "text": "تطبيق workbench يحتاج: python3 -m workbench.run مع httpx+uvicorn+fastapi+python-multipart · المنفذ 12000"
+  },
+  {
+   "at": "2026-10-25 11:21",
+   "text": "المشرف يفحص المنافذ (curl) لا أسماء العمليات — pgrep -f يفشل مع 'python3 server.py' الذي يعمل بـ cwd مختلف"
+  },
+  {
+   "at": "2026-10-25 11:21",
+   "text": "الاختبارات المُثبتة: الحرس يقتل عند 6ث (6.0ث فعلياً) · الحارس المستقل قتل مهمة صمّاء عند 5ث · /restore يعمل في 5.4ث"
+  },
+  {
+   "at": "2026-10-25 11:21",
+   "text": "الحارس المستقل (Reaper) ضروري: يقتل حتى المهمة التي لا تفحص نفسها — لأن الخيط المعلّق لا يستطيع أن يقتل نفسه"
   }
  ],
  "state": [
@@ -212,8 +246,8 @@
   {
    "proj": "ESCaiDO",
    "k": "done",
-   "v": "المرحلة 1: ذاكرة دائمة (restore 16/16) · المرحلة 2: الحرس (600ث) + كاشف التكرار + مشرف دائم + بوت تيليجرام",
-   "at": "2026-10-25 11:18"
+   "v": "م1 ذاكرة دائمة (restore 16/16) · م2 الحرس (600ث + كاشف تكرار + reaper) + مشرف دائم 4/4 خدمات + بوت تيليجرام (/restore في 5.4ث)",
+   "at": "2026-10-25 11:21"
   },
   {
    "proj": "ESCaiDO",
