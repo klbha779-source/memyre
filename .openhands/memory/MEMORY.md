@@ -4,22 +4,25 @@
 
 <!-- MEM:STATE -->
 ## الحالة الحالية
-_2026-10-25 17:53_
+_2026-10-25 17:57_
 
-**6 أنظمة مكتملة ومُختبَرة حياً + APK جاهز للتحميل.**
+**7 أنظمة مكتملة + APK جاهز يعمل بلا إعداد.**
 🔍 **البحث:** dr2.py · 31 محركاً · ميزانية صارمة · 4 نقّاد
 🧠 **الأكواد:** codemind.py · 4 طبقات · كود خام من الصفر + فحص حقيقي + إصلاح جذري
 📋 **التخطيط:** taskforge.py · معمارية + مراحل + فحص قبول
 👔 **المشرف:** supervisor.py · آلة مراحل 7 + توجيه 5 عمال + gate للكوكيز
 🖱️ **يد المتصفح:** browserhands.py · Playwright بحركة بشرية + كوكيز في الخزنة
-🌉 **الجسر:** bridge.py (كمبيوتر) + **APK مبني وموقَّع (هاتف)** · تليجرام · المالك فقط
-📱 **تحميل الـ APK:** https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk
+🌉 **الجسر:** bridge.py (كمبيوتر) + **APK (هاتف) — التوكن مدمج، يبدأ تلقائياً**
+📱 **تحميل:** https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk
 🔌 **الربط:** 3 خوادم MCP (27 أداة) + 3 مهارات + 4 خطافات
-🛠️ **أدوات البناء:** /workspace/atools (JDK 17 + Android SDK 34) — بنيت الـ APK بلا Gradle
+🛠️ **أدوات البناء:** /workspace/atools (JDK 17 + Android SDK 34) · بلا Gradle
 <!-- /MEM:STATE -->
 
 <!-- MEM:FACTS -->
 ## حقائق دائمة
+- حقيقة صلاحيات أندرويد (يجب قولها للمستخدم): لا يمكن لأي تطبيق تخطّي نوافذ الموافقة على الصلاحيات — يفرضها النظام. أفضل ما يمكن فعله: طلبها كلها تلقائياً واحدة تلو ا…
+- درس بناء APK مهم: التوكن يجب أن يكون في الصنف الذي يستخدمه فعلاً. وضعته أولاً في MainActivity فحُذف عند إعادة كتابة الملف → التوكن غاب من الـ dex بصمت. الحماية: بعد…
+- APK ESCaiDO Bridge v1.1 (بلا إعداد): التوكن TG_TOKEN ومعرّف TG_CHAT مدمجان وقت البناء داخل Engine.java (public static final String TOKEN/CHAT) ويُستخدمان في مُنشئ E…
 - طلب المستخدم: يريد مني توكن ماعرف ايش شنو اضيف فيه ياخي اني اريد بمجرد انزلة يبدء يتحكم بالجهاز عن طريق اوبن هاندز بدون صلاحيات ولا اي شيئ اصلا مباشرة يفتح بلجهاز
 - قدرات تطبيق ESCaiDO Bridge (داخل الـ dex، مُتحقَّقة بـ dexdump): /info (طراز+أندرويد+معمارية+أنوية+ذاكرة+تخزين) · /diag (تشخيص+حلول) · /battery (نسبة+شحن+حرارة+جهد)…
 - رابط تحميل APK: https://work-2-dhtwigrnoupljkbx.prod-runtime.all-hands.dev/apk/ESCaiDO-Bridge.apk (HTTP 200 · application/vnd.android.package-archive). أُضيف المسار…
@@ -44,7 +47,4 @@ _2026-10-25 17:53_
 - دروس المقارنة مع منظومات العالم (2026-10-25): MiroThinker 1.7 (88.2 BrowseComp، 600 أداة/مهمة) · hyperresearch (4 نقّاد متوازين) · unlazy (شجرة العمق: كل ورقة تأخذ …
 - منظومة البحث مدمجة في OpenHands بثلاث طرق: (1) مهارة .agents/skills/deep-research/SKILL.md (2) خادم MCP design-preview/mcp_deepresearch.py بأدوات deep_research/rese…
 - سلسلة النماذج dr2.LADDER (مُختبرة حياً): nemotron-3-ultra-550b (0.5ث، الأقوى والأسرع) → nemotron-3-nano-omni-30b (0.6) → nemotron-3.5-bolt-e4b (0.2) → ثم بدائل Open…
-- المحركات: 31 محركاً بلا مفاتيح تأكدت حياً 2026-10-25 (github, ghcode, gitlab, codeberg, hf/hfspace/hfdata, openalex, arxiv, crossref, hn, lobsters, marginalia, npm,…
-- جودة البحث تتضاعف بجولات التعميق L5b (بعد النواقد): تُبحث الثغرات التي حدّدها النقّاد، ثم تُفتح دفعة المرشحين التالية، ثم يُعاد تعبئة المخزون باستعلامات جديدة من ال…
-- أخطر علّة كانت في منظومة البحث: ThreadPoolExecutor عند الخروج ينتظر كل المهام المعلّقة، فيتجاوز الموعد. الحل: ex.shutdown(wait=False, cancel_futures=True) + as_comp…
 <!-- /MEM:FACTS -->
