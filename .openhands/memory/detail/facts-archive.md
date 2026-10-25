@@ -185,3 +185,11 @@
 - 2026-10-25 14:44 — بوت التيليجرام @escaidoaiopd_bot: /start /restore /status /progress /keys /save /projects · رمز الاستعادة SKAIDO-RESTORE · التوكن في الخزنة (TG_TOKEN)
 - 2026-10-25 14:44 — الأمر الحاسم: python3 scripts/mem.py restore يستعيد الذاكرة + القاعدة + الخزنة + .env من GitHub
 - 2026-10-25 14:56 — البدء التلقائي: .agents/plugins/skaido-memory/hooks/startup.sh يُشغّل scripts/supervise.sh في كل جلسة (SessionStart) — idempotent
+- 2026-10-25 16:12 — تطبيق workbench يحتاج: python3 -m workbench.run مع httpx+uvicorn+fastapi+python-multipart · المنفذ 12000
+- 2026-10-25 16:12 — المشرف يفحص المنافذ (curl) لا أسماء العمليات — pgrep -f يفشل مع 'python3 server.py' الذي يعمل بـ cwd مختلف
+- 2026-10-25 16:12 — الاختبارات المُثبتة: الحرس يقتل عند 6ث (6.0ث فعلياً) · الحارس المستقل قتل مهمة صمّاء عند 5ث · /restore يعمل في 5.4ث
+- 2026-10-25 16:12 — الحارس المستقل (Reaper) ضروري: يقتل حتى المهمة التي لا تفحص نفسها — لأن الخيط المعلّق لا يستطيع أن يقتل نفسه
+- 2026-10-25 16:12 — الكارثة التي اكتشفتها: الحارس الخلفي دفع ذاكرة فارغة فوق GitHub ومسحت 41 حقيقة → الحل: _is_empty() يرفض الدفع الفارغ + _git_backup() نسخة ثانية في git المحلي
+- 2026-10-25 16:12 — memory.db ملف ثنائي .db لا يُدفع عبر contents API — أُعيد بناؤه من memory-export.json في restore (الذي يُصدَّر تلقائياً قبل كل دفع)
+- 2026-10-25 16:12 — GitHub push protection يحجب أي ملف فيه سر حقيقي: أنواع اكتُشفت فعلياً = VERCEL_PERSONAL_ACCESS_TOKEN (vcp_) و GOOGLE_GCP_API_KEY_BOUND_SERVICE_ACCOUNT (AQ.) — كشفها بـ bisect على محتوى الملف
+- 2026-10-25 16:12 — recorder.py: يقرأ llm_message من MessageEvent (لا message) · role في llm_message.role · يكتب TRANSCRIPT.md غير محدود + يحجب الأسرار
