@@ -1365,124 +1365,168 @@
  ],
  "facts": [
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: لا يا اخي اريد تصميم افضل والوان افضل واجعله يلعب الوضع الليلي والنهاري ويعني واجعلني استطيع يعني ارسل له رساله كتجريبي ضيف فيه نموذج واحد يعني فقط نموذج خفيف اربطه فيه فقط للتجربه الرسائل وكيف يريد وكيف يبحث وكيف هاي يعني واعمل تصميم مختلف عن هذا هذا التصميم فيه اخطاء بمعنى الكلمه اريد تصميم اكثر احترافيه واكثر تفاعلا واكثر يعني احترافيه من هذا بالمراحل ويعني مختلف كليا عن هذا التصاميم البدائيه ا"
+   "at": "2026-10-25 10:59",
+   "text": "EMOTION TAGS 2026-10-23 -> `detail/emotion-tag-rootcause-2026-10-23.md`: `iraqiTextUtil.clean_tags()`"
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: التطبيق فيه مشاكل بمعنى الكلمة رغم ان تفاعلاته اعجبتني اصلح الاخطاء وارسلة من جديد بانميشنات اكثر حترافية وازرار خالية من الاخطاء خصوصا عندما افتح الاعدادات الازرار تكون معقدة وفيها كلجاا ولاق"
+   "at": "2026-10-25 10:59",
+   "text": "rewrites `[tag]`->`<tag>` and the vocab has no `<tag>`, so tags shredded to chars."
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: لا يا اخي ادي لي واجهه مختلفه لكن اللي يعجبني فيه زر التفكير او التحميل اللي يظهر مثل الدوائر تصعد وتنزل كانها ثعبان صغير او شيء هذه فقط اللي عجبتني اما الباقي كله ما عجبني فقم بعمل تصميم مختلف جذريا"
+   "at": "2026-10-25 10:59",
+   "text": "FIX: `_itu.clean_tags = lambda t: t`. Valid: [whisper] [shhh] [laughter] [giggle] [cry] [sigh]"
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: حلوه لكن هنالك ازرار كثيره ناقصه واشياء كثيره ناقصه مثلا عندك الايجنتات او طريقه التفكير او طريقه التحليل او مثلا ميزه البناء او ميزه البحث العميق ميزه التخطيط الرسائل التخطيط يعني هذه الاشياء كمحاكاه اريدها يعني في هذا النموذج كما حاكات يعني حاول ان تضيفن في هذه الدردشه واريد تجعل الدردشه اكثر احترافيه الان فيها بعض الاخطاء فرتبت يعني اضيف كل الاسرار اللي نحتاجه وكل شيء نحتاجه اقرا الرسائل السابق"
+   "at": "2026-10-25 10:59",
+   "text": "[gasp] [groan] [mumble] [sniff] [cough] [clear_throat] [inhale] [UH]. Invalid: laugh scream shout"
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: لا لا لا تبني بشكل نهائي لا لا زدنا في وضع المعاينه فقط اريد تعمل محاكاه يعني كانك ضفت كل شيء ولكنك لم تفعلهن يعني فقط كمعاينه محاكاه لكي ارى النتيجه النهائيه التي لو طبقنا او لو اخترنا هذا القالب ستبني المنظومه بهذا الشكل ستصبح"
+   "at": "2026-10-25 10:59",
+   "text": "sob moan pause breath stutter hes weep throat_clear."
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: يا اخي المربعات اللي مثل الثعبان كبيره جدا بشكل مبالغ فيها رتبه بشكل احترافي وهنالك بعض الازرار مبالغ فيها وغير احترافيه رتبها وجعلها احترافيه بشكل اكثر عمليه وتناسب الهاتف واريد بعض الاعدادات ترتبهن واريد يعني الخطط ورد يعني الرد النصي يكون احترافي بمعنى الكلمه بحيث يعني حسب البحث مثلا اذا كان بحث عميق او ترتيب خطه يعطيني جداول وهندسيات ومخططات احترافيه ويعني يعطيني خطه ويشرحها ويبسطها ويرسم لي م"
+   "at": "2026-10-25 10:59",
+   "text": "TELEGRAM BOT: @escaidoaiopd_bot, chat_id 5399915161. Token ONLY in `~/.escdo/telegram.json` (600)."
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: يا اخي قم ببناء تطبيق مختلف وواجه مختلف هذه الواجهه لا تعجبني اريد تصميم واجهه مختلفه قومي ببناء بمده خمس دقائق بشكل سريع ولكن ضيف فيه جميع الازرار التي نحتاجها"
+   "at": "2026-10-25 10:59",
+   "text": "Cell templates keep `__TOKEN__`/`__CHAT__`/`__REF_IDS__`, rendered by `tools/make_cell.py`."
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: هل تمزح معي انت ارسلت لي نفس الموقع انا اريد تصميم مختلف بالكامل لكن قبل ان تنفذ التصميم لدي اقتراح لك هل انت جاهز للسماع الاقتراح ساركز معي ساعطيك الاقتراح Aritمانيك تستخدم الآن في OpenHands تستخدم أفضل وأقوى وهو أعظم نماذج MCP للديزاين وللأنيميشن وللنصوص ولترتيب الواجهات الويب يعني يرتب واجهات التطبيقات بشكل احترافي. يعني هناك مشاريع في الجيت هاب تعطي أنيميشنات، تعطي تصاميم نماذج مخصصة للتصاميم"
+   "at": "2026-10-25 10:59",
+   "text": "Details: `detail/telegram-bot-2026-10-23.md`."
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: لديك خمس دقائق خمس دقائق ابني التصميم الجديد للموقع نفسه ولكن تصميم مختلف واستخدم جميع الادوات والمهارات الام سي بي لكي تساعدك في التصميم لكي يظهر التصميم الاحترافي الشامل الكامل النهائي ولكن ليس النهائي يعني النهائي من ناحيه التصميم كواجهه من ناحيه الازرار والنقر لكي اشوف الفرق بعد اضافه هذه المهارات"
+   "at": "2026-10-25 10:59",
+   "text": "PLAN v3 (`docs/plan-tts-v3.md`) is authoritative; v2 and FINAL-PLAN.md are superseded. HARD FACT: reference audio is TRUNCATED (`ENC_COND_LEN=6*16000`=6.0s, `DEC_COND_LEN=10*24000`=10.0s) so cloning from hours of audio is useless — quality comes from cleanliness, not length. Lahgtna has NO duration control; scene timing needs a post-processing layer (librosa time_stretch; >20% distorts, so split the text)."
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: يا اخي اريد تصميم مختلف جذريا يعني تصاميم تعطي انطباع شات مثل شات جي بي تي يعني اريد الانطباع يقترب جدا مشان جي بي تي يعني يكون سهل الاستخدام متعود عليه لاني اكثر شيء استخدمتي ولكن تكون بنسخه مطوره وبامكانياتها جدا فائقه وازرار احترافيه وكل شيء يكون عن طريق الشات وبنفس الاشياء المطلوبه واريدك ترسل لي جدول للمهمه او الخطه النهائيه والادوات والاضافات والنماذج والانظمه التي اخترناها لبناء الاي جنس يع"
+   "at": "2026-10-25 10:59",
+   "text": "AGENT/QUOTA AUDIT 2026-10-24 -> `detail/free-quota-evidence-2026-10-24.md` + `detail/agent-audit-2026-10-24.md`: Kilo is the only keyless free API (200/hr/IP = 3.33/min, so 5-10/min sustained is impossible on one IP). `/v1/models` is public everywhere and proves NOTHING — test `/chat/completions`. OpenHands runs on LiteLLM so it is already a router. No OSS agent combines web UI + real code execution + live events + MCP + skills + memory + resume except OpenHands."
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: استخدم جميع ادوات الام سي بي التي قمت باضافتها لكي تحسن تصميم مواجهه الاحترافيه خاصه بالتصميم الواجهه الويب الخاصه بالاي جنت"
+   "at": "2026-10-25 10:59",
+   "text": "**Memory budget: ~6000 chars combined**; over budget drops lines from the TOP. Keep this file lean"
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: اريد دزاين وتصميم مختلف ياخي يا اخي هنالك مشكله تضيف ام سي بي تكتشف الاخطاء ويعني اللي من في التصميم يعني هناك يعني يعمل لي بعض الازهار غير احترافيه او يعمل لي يعني واجهه فيها نقص مثلا في الانيميشن في الازرار في هاي يعني ما يعملها مثل النتيجه النهائيه اعمل لي واي يعني تصميم نهائي تصميم هاي بدون ما تضيف النماذج يعني ما يحتاج تضيف نماذج اجعل تصميم نهائي ويب كامل بجميع الازرار بجميع التفاعلات بكل شيء"
+   "at": "2026-10-25 10:59",
+   "text": "and push detail into `detail/`. Check pointers resolve (`grep -o 'detail/.*\\.md'`)."
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: يا أخي تصميم مختلف، اعمل تصميم مختلف جديد بالكامل، يعني تصميم مختلف بالواجهة وتفاعلات أكثر احترافية من هذه الألوان والأشكال اريد تصميم مختلف كليا قم بتصميمة بضرف 5 دقائق كحد اقصى"
+   "at": "2026-10-25 10:59",
+   "text": "**NVIDIA KEY (measured 2026-10-24) -> `detail/nvidia-key-measurements-2026-10-24.md`:** works. Only 4/85 models usable: **`z-ai/glm-5.3`** (free HERE — plans claimed it was paid), `z-ai/glm-5.3-flash`, **`minimaxai/minimax-m3.1-flash`** (fastest), `openai/gpt-oss-20b`. Rate limit **5 req then 429**, ~90s recovery, ~15/hr/model, per-model. Official docs URL is 404 so the limit is MEASURED (public '40 RPM' claim is wrong). glm-5.3 needs max_tokens>=1000."
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: يا أخي التطبيق يعمل لكن ليس نفس الآلية التي أريدها أنا. سأرسل لك API إنفيديا وسأرسل لك API جيميناي، وسأرسل لك API فيرسال وأنت قم بإضافتهم وإضافة النماذج وتفعيل الموقع ولديك 15 دقيقة. اعمل بكل تركيز وبكل طاقة لديك لإكمال التطبيق بشكل احترافي بنفس ما أريده وتفعيل جميع المميزات وتفعيل جميع النماذج المطلوبة. وقيم وحلل أفضل النماذج وابن التطبيق بأفضل هندسة معمارية. استعمل جميع الأنسبيات الخاصة بترتيب ا"
+   "at": "2026-10-25 10:59",
+   "text": "**GEMINI KEY (measured 2026-10-24) -> `detail/gemini-key-measurements-2026-10-24.md`:** works via OpenAI-compatible `/v1beta/openai/chat/completions` (Bearer) so it plugs into LiteLLM directly; tool calling verified. **`\"limit\": 20` + `quotaId: ...PerDayPerProjectPerModel-FreeTier` = 20 req/DAY PER MODEL**; 5 RPM. Pro is limit=0; only 5 of 46 listed models usable."
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: يا اخي التطبيق اللي عملته لي انت جدا جدا رديء يعني الازرار فيه كلها خاطئه ولا يناسب الهاتف وتصميمه بدائي انا اريد تطبيق هاتف يعني حقيقي اي جنت احترافي كانه شات جي بي تي بالضبط قم بتصميم مختلف وافضل وباسرع وقت وبافضل جوده خام"
+   "at": "2026-10-25 10:59",
+   "text": "**REVISED CAPACITY 2026-10-24:** Gemini 100/day + NVIDIA ~100-400/day + Kilo 200/hr ⇒ **~300-700 req/day** vs the 1000-2000 target. Improved ~3x with the NVIDIA key but still 2-5x short — never claim the target is met."
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: حلو، الآن أريدك تقوم، يعني التطبيق جيد، لكن أريدك تستعمل جميع الأمثلة والأدوات المخصصة في التفكير والتصميم والتخطيط. أريدك تطور ميزة البحث العميق، يعني آلية وعرض الرسالة في البحث العميق. أريد رسالة احترافية بالمخططات، يعني بشكل احترافي. يعني وما أريد أنا أحدد الوضع بشكل، يعني مثلاً قلت له ابحث لي عن موقع يختاره بشكل تلقائي. الآن أنا أختاره بشكل يدوي. ما أريد بشكل يدوي، أريد كله يكون أوتوماتيك يعني"
+   "at": "2026-10-25 10:59",
+   "text": "**REPORTS written to `reports/` (2026-10-24):** ESCaiDO_BRAIN_RESEARCH.md (main, Arabic),"
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: الان ضيف ميزه ميزه مثل اوبن هانز اريد تضيف ميزات اوبن هاندس يعني بالتصاميمأريد تضيف ميزات open hands مثلاً من ميزات OpenHands في الإعدادات تستطيع ربط نماذج جديدة، تستطيع إضافة بشكل فعلي نماذج جديدة، تستطيع بشكل فعلي إضافة مكاتب لمهارات جديدة، تستطيع إضافة MCP بشكل فعلي، تستطيع ربط تكاملات مع GitHub أو مواقع أخرى. تستطيع مثلاً استخدام أو التبديل بين النماذج بشكل احترافي. ويكون يعني يطور نفسه بنفسه،"
+   "at": "2026-10-25 10:59",
+   "text": "MODEL_COMPARISON.md, FREE_API_PROVIDERS.md, AGENT_ARCHITECTURE.md, SECURITY_AND_LIMITATIONS.md."
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: اكمل المهمة الان ضيف ميزه ميزه مثل اوبن هانز اريد تضيف ميزات اوبن هاندس يعني بالتصاميمأريد تضيف ميزات open hands مثلاً من ميزات OpenHands في الإعدادات تستطيع ربط نماذج جديدة، تستطيع إضافة بشكل فعلي نماذج جديدة، تستطيع بشكل فعلي إضافة مكاتب لمهارات جديدة، تستطيع إضافة MCP بشكل فعلي، تستطيع ربط تكاملات مع GitHub أو مواقع أخرى. تستطيع مثلاً استخدام أو التبديل بين النماذج بشكل احترافي. ويكون يعني يطور"
+   "at": "2026-10-25 10:59",
+   "text": "**UI INTEGRATION 2026-10-24**: The React RTL workbench UI now lives in `workbench/ui/` and is served at **/ui** (build output `workbench/static/ui/`); the old vanilla page stays at `/`. `src/lib/api.ts` is the only file that calls fetch. Full notes + the 6 browser-only bugs (toast never dismissed, rAF scroll-anchor race, RTL `inset-inline-end` putting the mobile drawer partly on screen, history re-populating the compose queue, SSE surviving a network drop so offline was never detected, and a prototype-CSS class mismatch that rendered the app unstyled) are in `detail/workbench-ui-2026-10-24.md`. Browser tests: `workbench/ui/e2e/*.py` (real Chromium, no mocks)."
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: الان لديك ساعه كامله اريدك تفعل جميع النماذج وتفعلهن جميعا وتجعل فعلا التحكم كل شيء يقدر يعمل يفعل جميع النماذج المطلوبه ضيف كل شيء وضيف المهارات ضفل النماذج اربط كل شيء حرفيا لكي يعمل بنسبه 100% ينفذ كل شيء ويصبح افضل من اوبن هاندز وافضل من جيب سكرنس"
+   "at": "2026-10-25 10:59",
+   "text": "**WORKBENCH MODELS 2026-10-24**: \"the models aren't connected\" was really LATENCY — `gemini-3.8-flash` was first in every role chain but returns 429, so each message burned 20-37s before failover (now fastest-first + PER_MODEL_TIMEOUT=45 → ~1.5s). VISION was never wired: images must be sent as base64 `image_url` parts, not a filename note. The React app is now served at ROOT (`/legacy` = old vanilla page). Reasoning models (nemotron-3.5-super-vl) fill `reasoning_content` first, so a big token cap makes them ALWAYS time out — keep a REASONING set, cap ~700 tokens, 120s budget. Settings (theme/accent/lang/density/radius/animations/models/skills) persist in a `settings(scope,key,value)` table; `/api/models` never accepts an API key from the browser. Full detail: `detail/workbench-ui-2026-10-24.md`."
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: <GITHUB-TOKEN>"
+   "at": "2026-10-25 10:59",
+   "text": "**MEDIA + ROSTER 2026-10-24**: Audio works ONLY via `input_audio` (`inline_data` → 400 on the Gemini OpenAI endpoint); video works as a `data:video/mp4;base64` URL in the ordinary `image_url` part. Only Gemini models accept these — NVIDIA silently ignores them. The provider catalogue advertises models that return **410 Gone**, so model lists must come from a live probe, never from `/v1/models`. `laguna-xs` is fastest (198ms) but intermittently 503s → use as fallback, not chain lead. The 1054 kB entry chunk was mermaid imported eagerly; `import('mermaid')` + `manualChunks` cut it to **47 kB** (DOMContentLoaded 124ms). Phone bug: the work panel is a fixed overlay under 920px and defaulted to open, covering the screen and eating taps."
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: استخدم تركن اريد تستخدم توكين جيتها بهذا الى الابد بحيث حتى لو اصبح مكشوف لا مشكله استخدمه لكي اي معلومه او اي شيء تريد رفعه على قيتها بتستطيع بسهوله يعني في الايجنت اجعل الاي جنت لديه سماحيات لرفع علاقات للبحث في جيدها يعني تصبح لديه صلاحيات كثيره في جيتار من خلال هذا التوكن"
+   "at": "2026-10-25 10:59",
+   "text": "**COUNCIL + AUTO-REPLACE 2026-10-24**: `workbench/council.py` runs a 5-lens panel (fact/logic/edge/risk/improve) per role; each lens is pinned to a DIFFERENT model (`DIVERSITY_POOL`) because 5 critics on one model share its blind spots. The lead synthesises and must end with \"تعديلات مقبولة: N\". Auto-replace: 2 consecutive failures → model benched, and only a model of the SAME ROLE is promoted (never swap a reasoning model for a cheap chat model). Kilo `https://api.kilo.ai/api/gateway/v1` is KEYLESS and serves nemotron-3-ultra-550b:free — verify with a bogus-path control (HTTP 400 = genuine; HTTP 200 'OK' = proxy interception). Never send an empty Bearer token to a keyless provider."
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: يا أخ، منظومة البناء لا تعمل. أريد منظومة البناء تعمل بنسبة مئة بالمئة يا أخي، ومنظومة البحث العميق لا تعمل. والاختيارات عشوائية بحيث عندما أرسل له رسالة يرد علي بشكل عشوائي، يعني إطلاق من نفس المميزات المطلوبة. ثاني شيء ما يقدر يتحكم عندما أقول له افتح يوتيوب، افتح هذه، هذه الميزات ما موجودة فيه. يعني وصفحة معينة ماكو. أنا أريد شاشة معينة. أي مهمة ينفذها تطلع لي بنفس المعاينة. أقدر أشوف شنو جاي ي"
+   "at": "2026-10-25 11:09",
+   "text": "منظومة الذاكرة الدائمة: scripts/mem.py — الأوامر: load/tail/note/fact/set/add/project/projects/compress/seal/unseal/push/pull/restore/doctor/export"
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: يا أخي غير آلية الردود عندما يرد علي، يرد علي يعني برسومات وتنزيل ما أعرف شنو يعني أزرار لا فائدة منهم. أنا أريد أزرار فعلاً تعمل. يعني الآن تسعين بالمئة من الأزرار محاكاة. يعني عندما أطلب طلب ما يبحث صدق فيه. يعني بسرعة يحمل بسرعة وينهي كمحاكاة. أنا أريده فعلاً يبحث، فعلاً يتعمق، فعلاً يبني، وفعلاً ينفذ الطلب المطلوب. أريد آلية عمله مثل شات جي بي تي 6 إكسترا، نفس آلية التحميل، نفس اللودينغ، نفس ا"
+   "at": "2026-10-25 11:09",
+   "text": "الأمر الحاسم للاستعادة الكاملة بعد فقدان كل شيء: python3 scripts/mem.py restore (يستعيد الذاكرة + القاعدة + الخزنة + .env)"
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: طوأريد تجعل نماذج جميعها تعمل كمنظومة واحدة، يعني الآن معظم المنظومات يعني معظم النماذج مضافة حالياً ضعيفة. فأنا أريد نماذج أقوى وأفضل بمراحل بكل مهمة. لديك رابط إنفيديو، ولديك رابط جيميناي، ولديك جيتهاب. يمكنك إضافة أي نموذج يعجبك. ولديك رابط آخر خاص بأوبن رولي. يمكنك أيضاً جلب منه نماذج مجانية. فالآن تعمق وابحث عن أفضل وأعظم نماذج للبحث العميق. وجيب لي منظومة بحث عميق. أولاً مثلاً عندما أنا أرسل"
+   "at": "2026-10-25 11:09",
+   "text": "المستودع البعيد: klbha779-source/memyre — عام! لذلك vault.key.b64 لا يُدفع أبداً (يُحمى تلقائياً)"
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: GLM FLASH 5.3 اريده بدل GLM 5.3 العادي لان العادي راح ينغلق في انفيديا جد بديله او اختار افضل نموذج بدل GLM"
+   "at": "2026-10-25 11:09",
+   "text": "الخزنة .openhands/vault.enc مشفّرة AES-256(CTR)+HMAC-SHA256 · المفتاح .openhands/.vaultkey متتبَّع في git"
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: طلدي اقتراح ذكي لك، بدل ما نستخدم برامج وأي جنرات جديدة، أريد أطور ديب سيك بحيث أحمل فيه ذاكرة واحدة. أول مرحلة راح نبدأ نطور فيه تطبيقات متتالية. الآن في أول تطويرة أريدك تضيف أعظم وأفضل ذاكرة لأن دائمة لأن OpenHands نفسه فيه ذاكرة مؤقتة. عندما يطفئ الإنترنت ويعمل يكون نسى كل شيء ولا يحفظ كل شيء. فأريد ذاكرة دائمة تربطها في OpenHands بالأساس بالجذر وتعملها في الإعدادات بشكل حقيقي وتتفعل يعني وترب"
+   "at": "2026-10-25 11:09",
+   "text": "الخطاف التلقائي: .agents/plugins/skaido-memory/hooks/hooks.json — UserPromptSubmit يقرأ آخر 5000 حرف في كل رسالة"
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: <GITHUB-TOKEN> هذا توكن وعملت ايضا مستودع جديد باسم سكايدو ميموري واري طريقة احترافية أضيف بعد يعني عشرين ألف حرف في كل مشروع مقسمة عن أهداف مشروع، خطة مشروع، آخر شيء قمنا بعمله، ماذا كان هدفنا، آخر شيء، بماذا كنا نعمل آخر شيء. وأريد يعني بعد ما أرسل الرسالة يدخل بشكل سريع يقرأ آخر شيء كنا نعمل فيه في الذاكرة. يعني يقرأ"
+   "at": "2026-10-25 11:09",
+   "text": "الحارس: scripts/mem-daemon.sh كل 15 دقيقة — snapshot + محاولة دفع (لا crontab في البيئة، حلقة خلفية)"
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: ومثلا أريد تحل مشكلة مثلا في أكورثاء الفي open hands يعني من أرسلها ويقول تمام رح أصلح، رح يصير خطأ في الكود. يعني الكود يتكرر يتكرر يتكرر إلى شبه ما لا نهاية. يعني كلمة تكرر يعني يحصل في glitch ويتأخر الرسائل. أو مثلا يستخدم وكيل فرعي أو يستخدم شيء ما ويبدأ يتأخر. يعني الوكيل الفرعي ممكن يطول خمس ساعات. يعني يطول خمس ساعات بدون نتيجة حقيقية. فهذا غلط، غلط يعني ينتظر أكثر من الحد. يعني أريد نموذج"
+   "at": "2026-10-25 11:09",
+   "text": "حد الحقن 6000 حرف — MEMORY.md يجب أن يبقى ≤5500؛ الحقائق تُقصَّر إلى 165 حرفاً والكامل في memory.db"
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: Done! Congratulations on your new bot. You will find it at t.me/escaidoaiopd_bot. You can now add a description, about section and profile picture for your bot, see /help for a list of commands. By the way, when you've finished creating your cool bot, ping our Bot Support if you want a better username for it. Just make sure the bot is fully operational before you do this. Use this token to access"
+   "at": "2026-10-25 11:09",
+   "text": "التوكن الكلاسيكي ghp_ يملك صلاحيات كاملة؛ fine-grained كان قراءة فقط. التوكن في .env + الخزنة"
   },
   {
-   "at": "2026-10-25 11:28",
-   "text": "طلب المستخدم: اعمل لي كود قصير كود يعني قصير في رابط وكل شيء في ذاكره ومن معلومات يعني المهمه التي عندما افتح اي محادثه جديده مباشره ارسلها له ويتذكر كل شيء بالحرف الواحد كانني فعدني في المحادثه الاصليه بحث يعني اي محادثه جديده تعرف ماذا اقصد وتعرف كل شيء حرفيا اي محادثه افتحها في اوبنه الجديده بس ارسل لها هذا الكود الذي ارسل الان تستعيد الذاكره وتستعيد المعلومات بسرعه فائقه وتتذكر كل شيء وتكمل مشروع كانها هي ا"
+   "at": "2026-10-25 11:09",
+   "text": "لا تشغّل push بمجلد ذاكرة فارغ — يحمي نفسه الآن ويرفض الكتابة فوق نسخة بعيدة سليمة"
+  },
+  {
+   "at": "2026-10-25 11:18",
+   "text": "الحرس (guard.py): سقف صارم 600ث لأي عملية · كاشف تكرار حرفي · حارس مستقل يقتل حتى المهمة التي لا تفحص نفسها"
+  },
+  {
+   "at": "2026-10-25 11:18",
+   "text": "أسباب التكرار/الglitch التي أُصلحت: لا AbortController في الواجهة (fetch يعلّق للأبد) · إعادة المحاولة على finish_reason=length · لا سقف زمني على مسار المحادثة"
+  },
+  {
+   "at": "2026-10-25 11:18",
+   "text": "الواجهة agent.js: fetchGuard بمهلة 600ث + AbortController + 3 إعادات بمضاعفة (0.8/1.6/3.2ث) · window.abortAll للإلغاء اليدوي"
+  },
+  {
+   "at": "2026-10-25 11:18",
+   "text": "المشرف scripts/supervise.sh: يُبقي الحارس + البوت + الخادم حيّين للأبد · يفحص المنافذ لا الأسماء · يستعيد المفاتيح من الخزنة تلقائياً"
+  },
+  {
+   "at": "2026-10-25 11:18",
+   "text": "بوت التيليجرام @escaidoaiopd_bot: /start /restore /status /progress /keys /save /projects · رمز الاستعادة SKAIDO-RESTORE · التوكن في الخزنة (TG_TOKEN)"
+  },
+  {
+   "at": "2026-10-25 11:18",
+   "text": "الأمر الحاسم: python3 scripts/mem.py restore يستعيد الذاكرة + القاعدة + الخزنة + .env من GitHub"
+  },
+  {
+   "at": "2026-10-25 11:21",
+   "text": "البدء التلقائي: .agents/plugins/skaido-memory/hooks/startup.sh يُشغّل scripts/supervise.sh في كل جلسة (SessionStart) — idempotent"
+  },
+  {
+   "at": "2026-10-25 11:21",
+   "text": "تطبيق workbench يحتاج: python3 -m workbench.run مع httpx+uvicorn+fastapi+python-multipart · المنفذ 12000"
+  },
+  {
+   "at": "2026-10-25 11:21",
+   "text": "المشرف يفحص المنافذ (curl) لا أسماء العمليات — pgrep -f يفشل مع 'python3 server.py' الذي يعمل بـ cwd مختلف"
+  },
+  {
+   "at": "2026-10-25 11:21",
+   "text": "الاختبارات المُثبتة: الحرس يقتل عند 6ث (6.0ث فعلياً) · الحارس المستقل قتل مهمة صمّاء عند 5ث · /restore يعمل في 5.4ث"
+  },
+  {
+   "at": "2026-10-25 11:21",
+   "text": "الحارس المستقل (Reaper) ضروري: يقتل حتى المهمة التي لا تفحص نفسها — لأن الخيط المعلّق لا يستطيع أن يقتل نفسه"
   }
  ],
  "state": [
